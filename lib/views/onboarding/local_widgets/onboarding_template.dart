@@ -110,17 +110,23 @@ class OnboardingTemplate extends StatelessWidget {
   }
 
   Widget buildTextPresentation(BuildContext context) {
-    Widget titleText = Text(
+    final titleText = Text(
       title,
-      style: TextTheme.of(context).titleLarge,
+      style: TextTheme.of(context).headlineSmall?.copyWith(
+        fontWeight: FontWeight.bold,
+        letterSpacing: -0.4,
+      ),
       textAlign: TextAlign.center,
     );
 
-    Widget descriptionText = Container(
-      constraints: const BoxConstraints(maxWidth: 250),
+    final descriptionText = Container(
+      constraints: const BoxConstraints(maxWidth: 280),
       child: Text(
         description,
-        style: TextTheme.of(context).bodyLarge,
+        style: TextTheme.of(context).bodyLarge?.copyWith(
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+          height: 1.4,
+        ),
         textAlign: TextAlign.center,
       ),
     );
@@ -131,7 +137,7 @@ class OnboardingTemplate extends StatelessWidget {
       children:
           [
             titleText,
-            const SizedBox(height: 8),
+            const SizedBox(height: 12),
             descriptionText,
           ].asMap().entries.map((entry) {
             return SpFadeIn.fromTop(
@@ -152,17 +158,17 @@ class OnboardingTemplate extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(maxStep, (index) {
-              bool isActive = (index + 1) == currentStep;
+              final isActive = (index + 1) == currentStep;
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeOutCubic,
                 margin: const EdgeInsets.symmetric(horizontal: 4.0),
                 height: 8.0,
-                width: isActive ? 24.0 : 8.0,
+                width: isActive ? 28.0 : 8.0,
                 decoration: BoxDecoration(
                   color: isActive
                       ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
+                      : Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(4.0),
                 ),
               );

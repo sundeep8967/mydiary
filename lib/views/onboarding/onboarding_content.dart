@@ -7,80 +7,163 @@ class _OnboardingContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Form(
       child: Scaffold(
-        extendBody: true,
-        appBar: AppBar(
-          forceMaterialTransparency: true,
-          actions: [
-            IconButton(
-              tooltip: tr("page.language.title"),
-              icon: const Icon(SpIcons.globe),
-              onPressed: () => LanguagesRoute(
-                showBetaBanner: false,
-                showThemeFAB: true,
-                fromOnboarding: true,
-              ).push(context),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                colorScheme.primaryContainer.withValues(alpha: 0.4),
+                colorScheme.surface,
+              ],
             ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          reverse: true,
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Container(
-              constraints: const BoxConstraints(maxWidth: 400),
-              child: buildContents(context),
+          ),
+          child: SafeArea(
+            child: Column(
+              children: [
+                // Top AppBar action
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 16.0, top: 8.0),
+                    child: IconButton(
+                      tooltip: tr('page.language.title'),
+                      icon: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: colorScheme.surface.withValues(alpha: 0.8),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(SpIcons.globe, size: 20),
+                      ),
+                      onPressed: () => LanguagesRoute(
+                        showBetaBanner: false,
+                        showThemeFAB: true,
+                        fromOnboarding: true,
+                      ).push(context),
+                    ),
+                  ),
+                ),
+                
+                // Hero Presentation Section
+                Expanded(
+                  child: Center(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SpFadeIn.fromTop(
+                            duration: Durations.long2,
+                            child: Container(
+                              padding: const EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: colorScheme.surface,
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: colorScheme.primary.withValues(alpha: 0.15),
+                                    blurRadius: 32,
+                                    spreadRadius: 4,
+                                    offset: const Offset(0, 8),
+                                  ),
+                                ],
+                              ),
+                              child: kAppLogo!.asset.image(width: 88, height: 88),
+                            ),
+                          ),
+                          const SizedBox(height: 28),
+                          SpFadeIn.fromTop(
+                            delay: Durations.medium1,
+                            duration: Durations.long3,
+                            child: Text(
+                              'Welcome to My Diary',
+                              style: TextTheme.of(context).headlineMedium?.copyWith(
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: -0.8,
+                                color: colorScheme.onSurface,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          SpFadeIn.fromTop(
+                            delay: Durations.medium2,
+                            duration: Durations.long3,
+                            child: Text(
+                              'Your personal, private journal for thoughts & memories.',
+                              style: TextTheme.of(context).bodyLarge?.copyWith(
+                                color: colorScheme.onSurfaceVariant,
+                                height: 1.4,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                // Sleek Bottom Input Card
+                SpFadeIn.fromBottom(
+                  delay: Durations.medium3,
+                  duration: Durations.long4,
+                  child: Container(
+                    width: double.infinity,
+                    constraints: const BoxConstraints(maxWidth: 480),
+                    margin: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(24.0),
+                    decoration: BoxDecoration(
+                      color: colorScheme.surface,
+                      borderRadius: BorderRadius.circular(28),
+                      boxShadow: [
+                        BoxShadow(
+                          color: colorScheme.shadow.withValues(alpha: 0.08),
+                          blurRadius: 28,
+                          offset: const Offset(0, 10),
+                        ),
+                      ],
+                      border: Border.all(
+                        color: colorScheme.outlineVariant.withValues(alpha: 0.4),
+                      ),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          tr('dialog.what_should_i_call_you.title'),
+                          style: TextTheme.of(context).titleMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          tr('dialog.what_should_i_call_you.message'),
+                          style: TextTheme.of(context).bodySmall?.copyWith(
+                            color: colorScheme.onSurfaceVariant,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        _NicknameField(viewModel: viewModel),
+                        const SizedBox(height: 20),
+                        _NextButton(viewModel: viewModel),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget buildContents(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.max,
-      children:
-          [
-            Container(
-              margin: const EdgeInsets.only(top: 36),
-              width: double.infinity,
-              child: kAppLogo!.asset.image(width: 120, height: 120),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 16),
-              child: Text(
-                tr("dialog.what_should_i_call_you.title"),
-                style: TextTheme.of(context).titleLarge,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 8),
-              child: Text(
-                tr("dialog.what_should_i_call_you.message"),
-                style: TextTheme.of(context).bodyLarge,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 32),
-              child: _NicknameField(viewModel: viewModel),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 16),
-              child: _NextButton(viewModel: viewModel),
-            ),
-          ].asMap().entries.map((entry) {
-            return SpFadeIn.fromTop(
-              delay: Durations.medium1 * entry.key,
-              duration: Durations.long3,
-              child: entry.value,
-            );
-          }).toList(),
     );
   }
 }

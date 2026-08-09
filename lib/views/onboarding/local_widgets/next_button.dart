@@ -11,19 +11,31 @@ class _NextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: CupertinoButton(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        color: Theme.of(context).colorScheme.primary,
-        disabledColor: Theme.of(context).disabledColor,
-        borderRadius: BorderRadius.circular(14), // Modern iOS prominent button radius
-        onPressed: () => viewModel.next(context),
-        child: Text(
-          tr("button.next"),
-          style: const TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w600,
-            color: CupertinoColors.white,
+      height: 54,
+      child: FilledButton(
+        style: FilledButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
+          elevation: 2,
+        ),
+        onPressed: () => viewModel.next(context),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              tr("button.next"),
+              style: const TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 0.3,
+              ),
+            ),
+            const SizedBox(width: 8),
+            const Icon(Icons.arrow_forward_rounded, size: 20),
+          ],
         ),
       ),
     );
