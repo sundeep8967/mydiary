@@ -8,6 +8,7 @@ import 'package:storypad/providers/backup_provider.dart';
 import 'package:storypad/views/backup_services/backup_services_view.dart';
 import 'package:storypad/widgets/base_view/base_route.dart';
 import 'package:storypad/widgets/sp_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BackupTile extends StatelessWidget {
   // No need const constructor for translation to work properly.
@@ -33,7 +34,7 @@ class BackupTile extends StatelessWidget {
       title = Text(tr("list_tile.backup.title"));
       subtitle = Text(tr('list_tile.backup.unsignin_subtitle'));
       action = FilledButton.icon(
-        icon: const Icon(SpIcons.googleDrive),
+        icon: SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24),
         label: Text(tr('button.connect')),
         onPressed: () => provider.signIn(context, .google_drive),
       );
@@ -64,13 +65,13 @@ class BackupTile extends StatelessWidget {
           title = Text(tr("list_tile.backup.title"));
           subtitle = Text(tr('list_tile.backup.no_permission_subtitle'));
           action = FilledButton.icon(
-            icon: const Icon(SpIcons.googleDrive),
+            icon: SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24),
             label: Text(tr('button.grant_permission')),
             onPressed: () => provider.requestScope(context, .google_drive),
           );
           break;
         case .readyToSync:
-          leading = const Icon(SpIcons.googleDrive);
+          leading = SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24);
           title = Text(tr("list_tile.backup.title"));
           subtitle = Text(tr('list_tile.backup.some_data_has_not_sync_subtitle'));
           action = FilledButton(
@@ -88,7 +89,7 @@ class BackupTile extends StatelessWidget {
     }
 
     if (provider.allYearSynced) {
-      leading = const Icon(SpIcons.googleDrive);
+      leading = SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24);
       subtitle = Text(DateFormatHelper.yMEd_jmNullable(provider.lastSyncedAt, context.locale) ?? '...');
       action = null;
       title = Text.rich(

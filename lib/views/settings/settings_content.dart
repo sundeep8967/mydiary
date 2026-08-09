@@ -37,6 +37,15 @@ class _SettingsContent extends StatelessWidget {
             delegate: SliverChildListDelegate([
               const SizedBox(height: 8),
               CupertinoListSection.insetGrouped(
+                header: const Text("Sign in to Google for backup"),
+                children: [
+                  Material(
+                    color: Colors.transparent,
+                    child: BackupTile(onNavigate: (route) => route.push(context)),
+                  ),
+                ],
+              ),
+              CupertinoListSection.insetGrouped(
                 header: Text(tr("general.appearance")),
                 children: [
                   ColorSeedTile(),

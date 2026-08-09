@@ -267,7 +267,7 @@
   "list_tile.backup.some_data_has_not_sync_subtitle": "Some changes haven't been synced yet.",
   "list_tile.backup.title": "Backups",
   "list_tile.backup.unknown_error": "Something went wrong. Please try again.",
-  "list_tile.backup.unsignin_subtitle": "Connect to Google Drive to back up your data.",
+  "list_tile.backup.unsignin_subtitle": "Sign in to Google to back up or restore your data.",
   "list_tile.color_seed.title": "Color Seed",
   "list_tile.created_at.title": "Created",
   "list_tile.day_colors.title": "Day Colors",

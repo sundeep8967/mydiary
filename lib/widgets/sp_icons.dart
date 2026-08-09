@@ -32,6 +32,7 @@ class SpIcons {
   static const IconData voice = kIsCupertino ? CupertinoIcons.mic : Icons.mic_none_sharp;
   static const IconData cloudUpload = kIsCupertino ? CupertinoIcons.cloud_upload : Icons.backup_outlined;
   // ignore: deprecated_member_use, brand icon deprecated upstream by MDI (trademark), no replacement
+  static const IconData google = MdiIcons.google;
   static const IconData googleDrive = MdiIcons.googleDrive;
   static const IconData cloudDone = Icons.cloud_done_outlined;
   static const IconData cloudOff = MdiIcons.cloudOff;
