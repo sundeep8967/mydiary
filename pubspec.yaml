@@ -87,6 +87,7 @@ dev_dependencies:
   flutter_gen_runner: ^5.14.1
   flutter_launcher_icons: 0.14.4
   flutter_lints: 6.0.0
+  flutter_native_splash: ^2.4.7
   flutter_test:
     sdk: flutter
   objectbox_generator: any
@@ -100,6 +101,7 @@ flutter:
     - assets/images/
     - assets/images/onboarding/
     - assets/emoji-64/
+    - assets/app_icon.png
     - assets/my_diary_icon.png
     - assets/my_diary_icon_transparent.png
     - assets/my_diary_logo_black.png
