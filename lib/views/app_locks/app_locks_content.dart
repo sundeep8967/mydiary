@@ -16,25 +16,42 @@ class _AppLocksContent extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          const SizedBox(height: 8.0),
-          SwitchListTile.adaptive(
-            secondary: const Icon(SpIcons.lock),
-            title: Text(tr('general.pin')),
-            subtitle: provider.appLock.pin != null
-                ? Text(List.generate(provider.appLock.pin!.length, (e) => "*").join())
-                : null,
-            value: provider.appLock.pin != null,
-            onChanged: (value) => provider.togglePIN(context),
-          ),
-          ?biometricTile,
-          const Divider(),
-          ListTile(
-            enabled: provider.appLock.pin != null,
-            title: Text(tr("page.security_questions.title")),
-            subtitle: Text(tr("page.security_questions.info")),
-            leading: const Icon(SpIcons.lockQuestion),
-            trailing: const Icon(SpIcons.keyboardRight),
-            onTap: () => SecurityQuestionsRoute().push(context),
+          CupertinoListSection.insetGrouped(
+            children: [
+              CupertinoListTile.notched(
+                leading: const Icon(SpIcons.lock),
+                title: Text(tr('general.pin')),
+                subtitle: provider.appLock.pin != null
+                    ? Text(List.generate(provider.appLock.pin!.length, (e) => "*").join())
+                    : null,
+                trailing: CupertinoSwitch(
+                  value: provider.appLock.pin != null,
+                  onChanged: (value) => provider.togglePIN(context),
+                ),
+              ),
+              if (biometricTile != null) biometricTile,
+              CupertinoListTile.notched(
+                title: Text(
+                  tr("page.security_questions.title"),
+                  style: TextStyle(
+                    color: provider.appLock.pin != null
+                        ? null
+                        : Theme.of(context).disabledColor,
+                  ),
+                ),
+                subtitle: Text(tr("page.security_questions.info")),
+                leading: Icon(
+                  SpIcons.lockQuestion,
+                  color: provider.appLock.pin != null
+                      ? null
+                      : Theme.of(context).disabledColor,
+                ),
+                trailing: const CupertinoListTileChevron(),
+                onTap: provider.appLock.pin != null
+                    ? () => SecurityQuestionsRoute().push(context)
+                    : null,
+              ),
+            ],
           ),
         ],
       ),
@@ -46,32 +63,40 @@ class _AppLocksContent extends StatelessWidget {
     required AppLockProvider provider,
   }) {
     if (provider.localAuth.enrolledBothFingerprintAndFace) {
-      return SwitchListTile.adaptive(
-        secondary: const Icon(SpIcons.biometrics),
+      return CupertinoListTile.notched(
+        leading: const Icon(SpIcons.biometrics),
         title: Text(tr("general.biometrics_lock")),
-        value: provider.appLock.enabledBiometric == true,
-        onChanged: (value) => provider.toggleBiometrics(context),
+        trailing: CupertinoSwitch(
+          value: provider.appLock.enabledBiometric == true,
+          onChanged: (value) => provider.toggleBiometrics(context),
+        ),
       );
     } else if (provider.localAuth.enrolledFace) {
-      return SwitchListTile.adaptive(
-        secondary: const Icon(SpIcons.faceUnlock),
+      return CupertinoListTile.notched(
+        leading: const Icon(SpIcons.faceUnlock),
         title: Text(tr("general.face_unlock")),
-        value: provider.appLock.enabledBiometric == true,
-        onChanged: (value) => provider.toggleBiometrics(context),
+        trailing: CupertinoSwitch(
+          value: provider.appLock.enabledBiometric == true,
+          onChanged: (value) => provider.toggleBiometrics(context),
+        ),
       );
     } else if (provider.localAuth.enrolledFingerprint) {
-      return SwitchListTile.adaptive(
-        secondary: const Icon(SpIcons.fingerprint),
+      return CupertinoListTile.notched(
+        leading: const Icon(SpIcons.fingerprint),
         title: Text(tr("general.fingerprint")),
-        value: provider.appLock.enabledBiometric == true,
-        onChanged: (value) => provider.toggleBiometrics(context),
+        trailing: CupertinoSwitch(
+          value: provider.appLock.enabledBiometric == true,
+          onChanged: (value) => provider.toggleBiometrics(context),
+        ),
       );
     } else if (provider.localAuth.enrolledOtherBiometrics) {
-      return SwitchListTile.adaptive(
-        secondary: const Icon(SpIcons.fingerprint),
+      return CupertinoListTile.notched(
+        leading: const Icon(SpIcons.fingerprint),
         title: Text(tr("general.biometrics_lock")),
-        value: provider.appLock.enabledBiometric == true,
-        onChanged: (value) => provider.toggleBiometrics(context),
+        trailing: CupertinoSwitch(
+          value: provider.appLock.enabledBiometric == true,
+          onChanged: (value) => provider.toggleBiometrics(context),
+        ),
       );
     }
     return null;

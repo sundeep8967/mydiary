@@ -19,14 +19,14 @@
     <application
         android:label="@string/app_name"
         android:name="${applicationName}"
-        android:icon="@mipmap/${appLogo}"
+        android:icon="@mipmap/uil_diary_alt"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:usesCleartextTraffic="true"
         android:localeConfig="@xml/locales_config"
     >
         <activity
-            android:name="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:taskAffinity=""
@@ -78,17 +78,254 @@
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data android:name="flutterEmbedding" android:value="2" />
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_map_api_key" />
+        <!-- App logo alias for arcticons_diary -->
+        <activity-alias
+            android:name="com.ravana.mydiary.arcticons_diary"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/arcticons_diary"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for bi_journal_bookmark_fill -->
+        <activity-alias
+            android:name="com.ravana.mydiary.bi_journal_bookmark_fill"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/bi_journal_bookmark_fill"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for famicons_journal -->
+        <activity-alias
+            android:name="com.ravana.mydiary.famicons_journal"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/famicons_journal"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for fluent_animal_cat_24_filled -->
+        <activity-alias
+            android:name="com.ravana.mydiary.fluent_animal_cat_24_filled"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/fluent_animal_cat_24_filled"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for iconoir_journal -->
+        <activity-alias
+            android:name="com.ravana.mydiary.iconoir_journal"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/iconoir_journal"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for mdi_fruit_grapes -->
+        <activity-alias
+            android:name="com.ravana.mydiary.mdi_fruit_grapes"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/mdi_fruit_grapes"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for mingcute_apple_fruit_fill -->
+        <activity-alias
+            android:name="com.ravana.mydiary.mingcute_apple_fruit_fill"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/mingcute_apple_fruit_fill"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for ooui_journal_ltr -->
+        <activity-alias
+            android:name="com.ravana.mydiary.ooui_journal_ltr"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/ooui_journal_ltr"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for streamline_ultimate_fruit_banana -->
+        <activity-alias
+            android:name="com.ravana.mydiary.streamline_ultimate_fruit_banana"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/streamline_ultimate_fruit_banana"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+--
+        <!-- App logo alias for uil_diary_alt -->
+        <activity-alias
+            android:name="com.ravana.mydiary.uil_diary_alt"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/uil_diary_alt"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+    <!-- App logo alias for arcticons_diary -->
+        <activity-alias
+            android:name="com.ravana.mydiary.arcticons_diary"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/arcticons_diary"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for bi_journal_bookmark_fill -->
+        <activity-alias
+            android:name="com.ravana.mydiary.bi_journal_bookmark_fill"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/bi_journal_bookmark_fill"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for famicons_journal -->
+        <activity-alias
+            android:name="com.ravana.mydiary.famicons_journal"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/famicons_journal"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for fluent_animal_cat_24_filled -->
+        <activity-alias
+            android:name="com.ravana.mydiary.fluent_animal_cat_24_filled"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/fluent_animal_cat_24_filled"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for iconoir_journal -->
+        <activity-alias
+            android:name="com.ravana.mydiary.iconoir_journal"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/iconoir_journal"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for mdi_fruit_grapes -->
+        <activity-alias
+            android:name="com.ravana.mydiary.mdi_fruit_grapes"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/mdi_fruit_grapes"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for mingcute_apple_fruit_fill -->
+        <activity-alias
+            android:name="com.ravana.mydiary.mingcute_apple_fruit_fill"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/mingcute_apple_fruit_fill"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for ooui_journal_ltr -->
+        <activity-alias
+            android:name="com.ravana.mydiary.ooui_journal_ltr"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/ooui_journal_ltr"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for streamline_ultimate_fruit_banana -->
+        <activity-alias
+            android:name="com.ravana.mydiary.streamline_ultimate_fruit_banana"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/streamline_ultimate_fruit_banana"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+<!-- App logo alias for uil_diary_alt -->
+        <activity-alias
+            android:name="com.ravana.mydiary.uil_diary_alt"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
+            android:icon="@mipmap/uil_diary_alt"
+            android:enabled="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
     </application>
-
-    <!-- Required to query activities that can process text, see:
-         https://developer.android.com/training/package-visibility and
-         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
-
-         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.PROCESS_TEXT" />
-            <data android:mimeType="text/plain" />
-        </intent>
-    </queries>
 </manifest>

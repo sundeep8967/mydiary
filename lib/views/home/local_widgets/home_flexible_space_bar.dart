@@ -11,18 +11,21 @@ class _HomeFlexibleSpaceBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, appBarConstraints) {
-        return Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: .topCenter,
-              end: .bottomCenter,
-              colors: [
-                viewModel.scrollInfo.appBar(context).getBackgroundColor(context),
-                viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.85),
-                viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.0),
-              ],
-            ),
-          ),
+        return ClipRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.6),
+                    viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.4),
+                    viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.0),
+                  ],
+                ),
+              ),
           child: FlexibleSpaceBar(
             collapseMode: CollapseMode.pin,
             background: Container(
@@ -42,6 +45,8 @@ class _HomeFlexibleSpaceBar extends StatelessWidget {
               ),
             ),
           ),
+        ),
+        ),
         );
       },
     );
@@ -111,12 +116,12 @@ class _HomeFlexibleSpaceBar extends StatelessWidget {
     BoxConstraints appBarConstraints,
   ) {
     return Positioned(
-      top: MediaQuery.of(context).padding.top + viewModel.scrollInfo.appBar(context).contentsMarginTop,
+      top: MediaQuery.of(context).padding.top + 56.0,
       bottom: 0,
-      left: AppTheme.getDirectionValue(context, 0.0, null),
-      right: AppTheme.getDirectionValue(context, null, 0.0),
+      left: AppTheme.getDirectionValue(context, 16.0, null),
+      right: AppTheme.getDirectionValue(context, null, 16.0),
       child: Container(
-        alignment: AppTheme.getDirectionValue(context, Alignment.topLeft, Alignment.topRight),
+        alignment: AppTheme.getDirectionValue(context, Alignment.bottomLeft, Alignment.bottomRight),
         width: viewModel.scrollInfo.appBar(context).getYearSize(appBarConstraints).width,
         height: viewModel.scrollInfo.appBar(context).getYearSize(appBarConstraints).height,
         margin: viewModel.scrollInfo.extraExpandedHeight > 0 ? const EdgeInsets.only(bottom: 8.0) : null,

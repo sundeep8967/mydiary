@@ -28,7 +28,7 @@ class _EditPlaceContent extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
+            child: CupertinoTextField(
               controller: viewModel.labelController,
               autofocus: true,
               textInputAction: TextInputAction.done,
@@ -38,9 +38,17 @@ class _EditPlaceContent extends StatelessWidget {
                   viewModel.apply(context);
                 }
               },
-              decoration: InputDecoration(
-                labelText: tr("input.place_name.label"),
-                hintText: tr("input.place_name.hint"),
+              placeholder: tr("input.place_name.hint"),
+              placeholderStyle: TextStyle(
+                color: ColorScheme.of(context).onSurface.withValues(alpha: 0.4),
+                fontSize: 15.0,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+              decoration: BoxDecoration(
+                color: ColorScheme.of(context).brightness == Brightness.dark
+                    ? Colors.white.withValues(alpha: 0.06)
+                    : Colors.black.withValues(alpha: 0.04),
+                borderRadius: BorderRadius.circular(10.0),
               ),
             ),
           ),

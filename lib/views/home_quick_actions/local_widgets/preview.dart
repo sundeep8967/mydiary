@@ -61,7 +61,7 @@ class _Preview extends StatelessWidget {
                             buildDefaultDragHandles: false,
                             padding: EdgeInsets.zero,
                             physics: const NeverScrollableScrollPhysics(),
-                            onReorderItem: viewModel.reorderActions,
+                            onReorder: viewModel.reorderActions,
                             children: [
                               for (int i = 0; i < viewModel.visibleEnabledActions.length; i++)
                                 ReorderableDelayedDragStartListener(

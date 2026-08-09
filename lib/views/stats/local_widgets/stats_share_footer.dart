@@ -33,7 +33,7 @@ class _StatsShareFooter extends StatelessWidget {
                     border: Border.all(color: Theme.of(context).dividerColor, width: 1.0),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: AppLogo.storypad_1_0.asset.image(width: 40, height: 40, fit: BoxFit.cover),
+                  child: AppLogo.values.first.asset.image(width: 40, height: 40, fit: BoxFit.cover),
                 ),
                 const SizedBox(width: 12.0),
                 Column(

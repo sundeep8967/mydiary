@@ -49,10 +49,6 @@ class _HomeTabBar extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
-          height: viewModel.scrollInfo.appBar(context).getTabBarPreferredHeight(),
-          child: Center(child: buildOpenEndDrawerButton(context)),
-        ),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -123,6 +124,7 @@ abstract class BaseBottomSheet {
     bool useRootNavigator = false,
     bool barrierDismissible = true,
   }) {
+    showDragHandle ??= barrierDismissible;
     return showModalBottomSheet<T>(
       useRootNavigator: useRootNavigator,
       context: context,
@@ -130,22 +132,36 @@ abstract class BaseBottomSheet {
       isDismissible: barrierDismissible,
       enableDrag: barrierDismissible,
       isScrollControlled: true,
-      barrierColor: barrierColor,
-      backgroundColor: backgroundColor,
+      barrierColor: barrierColor ?? Colors.black.withValues(alpha: 0.35),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
       builder: (context) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-            scaffoldBackgroundColor: Colors.transparent,
-            appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent, surfaceTintColor: Colors.transparent),
+        final isDark = Theme.of(context).brightness == Brightness.dark;
+        final themeBg = backgroundColor ?? Theme.of(context).colorScheme.surface;
+        return ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(16.0),
+            topRight: Radius.circular(16.0),
           ),
-          // No need left or right default padding for sheet.
-          child: MediaQuery.removePadding(
-            context: context,
-            removeLeft: true,
-            removeRight: true,
-            child: builder(
-              context,
-              MediaQuery.of(context).padding.bottom + MediaQuery.of(context).viewInsets.bottom,
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0),
+            child: Container(
+              color: themeBg.withValues(alpha: isDark ? 0.78 : 0.88),
+              child: Theme(
+                data: Theme.of(context).copyWith(
+                  scaffoldBackgroundColor: Colors.transparent,
+                  appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent, surfaceTintColor: Colors.transparent),
+                ),
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeLeft: true,
+                  removeRight: true,
+                  child: builder(
+                    context,
+                    MediaQuery.of(context).padding.bottom + MediaQuery.of(context).viewInsets.bottom,
+                  ),
+                ),
+              ),
             ),
           ),
         );
@@ -181,7 +197,7 @@ abstract class BaseBottomSheet {
     if (fullScreen) {
       return showCupertinoSheet(
         context: context,
-        scrollableBuilder: (context, controller) {
+        builder: (context) {
           return SpCupertinoFullPageSheetConfigurations(
             context: context,
             child: Builder(

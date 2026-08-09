@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/providers/in_app_purchase_provider.dart';
@@ -18,8 +19,9 @@ class QuickActionsTile extends StatelessWidget {
     final inAppPurchaseProvider = Provider.of<InAppPurchaseProvider>(context);
     final locked = !inAppPurchaseProvider.isProUser;
 
-    return ListTile(
-      trailing: locked ? const Icon(SpIcons.lock) : null,
+    return CupertinoListTile.notched(
+      additionalInfo: locked ? const Icon(SpIcons.lock, size: 16) : null,
+      trailing: const CupertinoListTileChevron(),
       leading: const SpSettingIconBadge(weekday: 1, icon: SpIcons.home),
       title: Text(tr('page.home_quick_actions.title')),
       onTap: () => const HomeQuickActionsRoute().push(context),

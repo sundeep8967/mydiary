@@ -27,9 +27,14 @@ class DevicePreferencesStorage extends ObjectStorage<DevicePreferencesObject> {
     }
 
     _preferences = await readObject();
+    if (_preferences != null && _preferences!.colorSeedValue == 0xFF000000) {
+      // Migrate old default (black) to null so it falls back to the new Apple Blue default
+      _preferences = _preferences!.copyWith(colorSeedValue: null);
+      await writeObject(_preferences!);
+    }
+
     if (_preferences == null) {
-      // ignore: deprecated_member_use
-      _preferences = DevicePreferencesObject(colorSeedValue: kDefaultColorSeed.value);
+      _preferences = DevicePreferencesObject.initial();
       await writeObject(_preferences!);
     }
   }

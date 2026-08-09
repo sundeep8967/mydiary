@@ -28,7 +28,7 @@ class _CalendarContent extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      centerTitle: true,
+      centerTitle: false,
       bottom: viewModel.segments.length > 1 ? buildSegmentButtons(context) : null,
       title: ValueListenableBuilder(
         valueListenable: viewModel.monthYearNotifier,
@@ -52,37 +52,36 @@ class _CalendarContent extends StatelessWidget {
           );
         },
       ),
-      // We don't need manual month navigation buttons yet. Use can use month picker or swipe gestures.
-      // actions: [
-      //   IconButton(
-      //     icon: const Icon(SpIcons.keyboardLeft),
-      //     onPressed: () {
-      //       final newMonth = viewModel.monthYearNotifier.value.month - 1 == 0
-      //           ? 12
-      //           : viewModel.monthYearNotifier.value.month - 1;
+      actions: [
+        IconButton(
+          icon: Icon(SpIcons.keyboardLeft),
+          onPressed: () {
+            final newMonth = viewModel.monthYearNotifier.value.month - 1 == 0
+                ? 12
+                : viewModel.monthYearNotifier.value.month - 1;
 
-      //       final newYear = viewModel.monthYearNotifier.value.month - 1 == 0
-      //           ? viewModel.monthYearNotifier.value.year - 1
-      //           : viewModel.monthYearNotifier.value.year;
+            final newYear = viewModel.monthYearNotifier.value.month - 1 == 0
+                ? viewModel.monthYearNotifier.value.year - 1
+                : viewModel.monthYearNotifier.value.year;
 
-      //       viewModel.onMonthYearChanged(newYear, newMonth);
-      //     },
-      //   ),
-      //   IconButton(
-      //     icon: const Icon(SpIcons.keyboardRight),
-      //     onPressed: () {
-      //       final newMonth = viewModel.monthYearNotifier.value.month + 1 == 13
-      //           ? 1
-      //           : viewModel.monthYearNotifier.value.month + 1;
+            viewModel.onMonthYearChanged(newYear, newMonth);
+          },
+        ),
+        IconButton(
+          icon: Icon(SpIcons.keyboardRight),
+          onPressed: () {
+            final newMonth = viewModel.monthYearNotifier.value.month + 1 == 13
+                ? 1
+                : viewModel.monthYearNotifier.value.month + 1;
 
-      //       final newYear = viewModel.monthYearNotifier.value.month + 1 == 13
-      //           ? viewModel.monthYearNotifier.value.year + 1
-      //           : viewModel.monthYearNotifier.value.year;
+            final newYear = viewModel.monthYearNotifier.value.month + 1 == 13
+                ? viewModel.monthYearNotifier.value.year + 1
+                : viewModel.monthYearNotifier.value.year;
 
-      //       viewModel.onMonthYearChanged(newYear, newMonth);
-      //     },
-      //   ),
-      // ],
+            viewModel.onMonthYearChanged(newYear, newMonth);
+          },
+        ),
+      ],
     );
   }
 

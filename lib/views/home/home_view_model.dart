@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/app_theme.dart';
+import 'package:storypad/views/settings/settings_view.dart';
 import 'package:storypad/core/constants/app_constants.dart';
 import 'package:storypad/core/databases/models/asset_db_model.dart';
 import 'package:storypad/core/extensions/color_scheme_extension.dart';
@@ -230,17 +233,72 @@ class HomeViewModel extends ChangeNotifier with DisposeAwareMixin {
   bool showFadeInYearEndDrawer = false;
   HomeEndDrawerState endDrawerState = HomeEndDrawerState.showSettings;
   Future<void> openSettings(BuildContext context) async {
-    showFadeInYearEndDrawer = true;
-    endDrawerState = HomeEndDrawerState.showSettings;
-    AnalyticsService.instance.logOpenHomeEndDrawer(year: year);
-    Scaffold.of(context).openEndDrawer();
+    SettingsRoute().push(context);
   }
 
   Future<void> openYearsView(BuildContext context) async {
-    showFadeInYearEndDrawer = false;
-    endDrawerState = HomeEndDrawerState.showYearsView;
-    AnalyticsService.instance.logOpenHomeEndDrawer(year: year);
-    Scaffold.of(context).openEndDrawer();
+    final currentYear = year;
+    final years = List<int>.generate(20, (i) => DateTime.now().year - 10 + i);
+    final initialIndex = years.indexOf(currentYear);
+
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => SafeArea(
+        top: false,
+        child: Container(
+          height: 260,
+          decoration: BoxDecoration(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(16.0),
+              topRight: Radius.circular(16.0),
+            ),
+          ),
+          child: Column(
+            children: [
+              Container(
+                height: 44,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Theme.of(context).dividerColor,
+                      width: 0.5,
+                    ),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CupertinoButton(
+                      child: Text(tr("button.cancel")),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    CupertinoButton(
+                      child: Text(tr("button.done")),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: CupertinoPicker(
+                  scrollController: FixedExtentScrollController(
+                    initialItem: initialIndex != -1 ? initialIndex : 10,
+                  ),
+                  itemExtent: 40,
+                  onSelectedItemChanged: (index) {
+                    final selectedYear = years[index];
+                    changeYear(selectedYear);
+                  },
+                  children: years.map((y) => Center(child: Text("$y"))).toList(),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> togglePinForStories(SpStoryListMultiEditWrapperState state, BuildContext context) async {

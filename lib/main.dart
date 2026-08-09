@@ -16,7 +16,9 @@ import 'package:storypad/core/initializers/legacy_storypad_initializer.dart' sho
 import 'package:storypad/core/initializers/licenses_initializer.dart' show LicensesInitializer;
 import 'package:storypad/core/initializers/onboarding_initializer.dart' show OnboardingInitializer;
 import 'package:storypad/core/initializers/theme_initializer.dart' show ThemeInitializer;
+import 'package:provider/provider.dart';
 import 'package:storypad/provider_scope.dart' show ProviderScope;
+import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:storypad/widgets/sp_splash_screen_wrapper.dart';
 
 void main({
@@ -52,6 +54,7 @@ Future<void> _initializeApp({
 
   // ui
   await ThemeInitializer.call();
+  AdaptiveDialog.instance.updateConfiguration(defaultStyle: AdaptiveStyle.iOS);
   await LegacyStoryPadInitializer.call();
   await OnboardingInitializer.call();
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);

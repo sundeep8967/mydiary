@@ -25,7 +25,7 @@ class DevicePreferencesProvider extends ChangeNotifier with WidgetsBindingObserv
 
   DevicePreferencesObject _preferences = storage.preferences;
   DevicePreferencesObject get preferences => _preferences;
-  ThemeMode get themeMode => preferences.themeMode;
+  ThemeMode get themeMode => ThemeMode.system;
 
   bool get enableRelaxSounds => preferences.enableRelaxSounds ?? false;
   bool enablePeriodCalendar(BuildContext context) =>

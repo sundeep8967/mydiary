@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fuzzy/fuzzy.dart';
 import 'package:provider/provider.dart';
@@ -152,25 +153,37 @@ class _SpFloatingTagPickerState extends State<SpFloatingTagPicker> {
         const SizedBox(height: _PADDING),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: _PADDING),
-          child: TextField(
+          child: CupertinoTextField(
             controller: _searchController,
             onChanged: (text) => setState(() => _query = text),
-            decoration: InputDecoration(
-              isDense: true,
-              hintText: _peopleMode ? tr('input.people.hint') : tr('input.tag.hint'),
-              hintStyle: TextStyle(color: ColorScheme.of(context).onSurface.withValues(alpha: 0.4)),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-                borderSide: BorderSide(color: ColorScheme.of(context).outline),
-              ),
-              suffixIconConstraints: const BoxConstraints(maxWidth: 32.0),
-              suffixIcon: _query.isEmpty
-                  ? const Padding(
-                      padding: EdgeInsets.only(right: 12.0),
-                      child: Icon(SpIcons.add),
-                    )
-                  : null,
+            placeholder: _peopleMode ? tr('input.people.hint') : tr('input.tag.hint'),
+            placeholderStyle: TextStyle(
+              color: ColorScheme.of(context).onSurface.withValues(alpha: 0.4),
+              fontSize: 15.0,
             ),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
+            decoration: BoxDecoration(
+              color: ColorScheme.of(context).brightness == Brightness.dark
+                  ? Colors.white.withValues(alpha: 0.06)
+                  : Colors.black.withValues(alpha: 0.04),
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            suffix: _query.isEmpty
+                ? const Padding(
+                    padding: EdgeInsets.only(right: 12.0),
+                    child: Icon(SpIcons.add, size: 20.0),
+                  )
+                : CupertinoButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      _searchController.clear();
+                      setState(() => _query = "");
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(right: 12.0),
+                      child: Icon(CupertinoIcons.clear, size: 16.0),
+                    ),
+                  ),
             style: TextTheme.of(context).bodyMedium,
           ),
         ),
@@ -205,7 +218,7 @@ class _SpFloatingTagPickerState extends State<SpFloatingTagPicker> {
                 shrinkWrap: true,
                 buildDefaultDragHandles: true,
                 padding: EdgeInsets.zero,
-                onReorderItem: (oldIndex, newIndex) {
+                onReorder: (int oldIndex, int newIndex) {
                   if (allowCreate) {
                     oldIndex -= 1;
                     newIndex -= 1;

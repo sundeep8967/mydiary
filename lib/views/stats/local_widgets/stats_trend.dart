@@ -71,10 +71,23 @@ class _StatsTrend extends StatelessWidget {
                         heightFactor: maxCount == 0 ? 0.02 : (bar.count / maxCount).clamp(0.02, 1.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: bar.count > 0
-                                ? colorScheme.primary
-                                : colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
-                            borderRadius: BorderRadius.circular(4.0),
+                            color: bar.count == 0
+                                ? colorScheme.surfaceContainerHighest.withValues(alpha: 0.6)
+                                : null,
+                            gradient: bar.count > 0
+                                ? LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      colorScheme.primary,
+                                      colorScheme.primary.withValues(alpha: 0.3),
+                                    ],
+                                  )
+                                : null,
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(100),
+                              bottom: Radius.circular(100),
+                            ),
                           ),
                         ),
                       ),

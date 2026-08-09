@@ -25,6 +25,8 @@ import 'package:storypad/core/storages/backup_import_history_storage.dart';
 import 'package:storypad/core/types/backup_connection_status.dart';
 import 'package:storypad/core/services/backups/sync_steps/backup_sync_message.dart';
 import 'package:storypad/core/services/messenger_service.dart';
+import 'package:storypad/core/services/firestore/firestore_sync_service.dart';
+import 'package:storypad/core/databases/models/story_db_model.dart';
 import 'package:storypad/core/types/backup_result.dart';
 import 'package:storypad/views/home/home_view.dart';
 
@@ -365,6 +367,17 @@ class BackupProvider extends ChangeNotifier with DebounchedCallback {
           _lastSyncedAtByYear?[year] = syncedAt;
         }
       }
+    }
+
+    try {
+      final user = await FirestoreSyncService.instance.ensureAuthenticated();
+      if (user != null) {
+        final collection = await StoryDbModel.db.where();
+        final allStories = collection?.items ?? [];
+        await FirestoreSyncService.instance.syncAllStories(allStories, userId: user.uid);
+      }
+    } catch (e) {
+      AppLogger.error('Error syncing to Firestore during backup sync: $e');
     }
 
     notifyListeners();

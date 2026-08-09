@@ -85,7 +85,7 @@ class _TagsContent extends StatelessWidget {
         padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
         buildDefaultDragHandles: true,
         itemCount: collection?.items.length ?? 0,
-        onReorderItem: (int oldIndex, int newIndex) => provider.reorder(oldIndex, newIndex, categoryId: categoryId),
+        onReorder: (int oldIndex, int newIndex) => provider.reorder(oldIndex, newIndex, categoryId: categoryId),
         proxyDecorator: (child, index, animation) {
           return Container(
             color: Theme.of(context).colorScheme.readOnly.surface5,
@@ -136,11 +136,7 @@ class _TagsContent extends StatelessWidget {
     TagsProvider provider,
     BuildContext context,
   ) {
-    return ListTile(
-      tileColor: Colors.transparent,
-      contentPadding: !viewModel.checkable
-          ? const EdgeInsets.only(left: 16.0, right: 16.0)
-          : const EdgeInsets.only(left: 4.0, right: 16.0),
+    return CupertinoListTile.notched(
       title: Text(tag.title),
       subtitle: Text(plural("plural.entry", storyCount)),
       trailing:
@@ -165,7 +161,7 @@ class _TagsContent extends StatelessWidget {
             ),
       leading: !viewModel.checkable
           ? null
-          : Checkbox.adaptive(
+          : CupertinoCheckbox(
               tristate: false,
               value: viewModel.selectedTags.contains(tag.id),
               onChanged:

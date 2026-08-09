@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "824195585439",
+    "project_id": "mydiary-app-1783157806",
+    "storage_bucket": "mydiary-app-1783157806.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824195585439:android:ee103a053c8f02d3c7d9aa",
+        "android_client_info": {
+          "package_name": "com.ravana.mydiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2UFRCekEJL_7IcYQ7rRuSZ0xi6lWOtos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

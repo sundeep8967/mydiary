@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/core/objects/default_story_preferences_object.dart';
@@ -17,10 +18,11 @@ class DefaultStoryPreferencesTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final locked = !Provider.of<InAppPurchaseProvider>(context).isProUser;
 
-    return ListTile(
+    return CupertinoListTile.notched(
       leading: SpSettingIconBadge(weekday: weekday, icon: SpIcons.edit),
       title: Text(tr("list_tile.default_story_preferences.title")),
-      trailing: locked ? const Icon(SpIcons.lock) : null,
+      additionalInfo: locked ? const Icon(SpIcons.lock, size: 16) : null,
+      trailing: const CupertinoListTileChevron(),
       onTap: () async {
         // The sheet has no save button for pro users; it reports its live draft and
         // we commit it once here, after the sheet closes.

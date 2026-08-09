@@ -113,26 +113,34 @@ class AppTheme extends StatelessWidget {
     required FontWeight fontWeight,
     Color? scaffoldBackgroundColor,
   }) {
-    scaffoldBackgroundColor ??= colorScheme.surface;
-
     bool darkMode = colorScheme.brightness == Brightness.dark;
+    scaffoldBackgroundColor ??= darkMode ? colorScheme.surface : Colors.white;
+
     ThemeData baseTheme = darkMode ? ThemeData.dark() : ThemeData.light();
 
     TextStyle calculateTextStyle(TextStyle textStyle, FontWeight defaultFontWeight) {
       return textStyle.copyWith(fontWeight: _calculateFontWeight(defaultFontWeight, fontWeight));
     }
 
-    Color? dividerColor = colorScheme.onSurface.withValues(alpha: 0.15);
+    Color? dividerColor = darkMode 
+        ? colorScheme.onSurface.withValues(alpha: 0.15) 
+        : const Color(0xFFC6C6C8); // Authentic iOS system divider color
     TargetPlatform platform = getPlatformByDartDefine();
 
     return baseTheme.copyWith(
-      platform: platform,
-      splashFactory: kIsCupertino ? NoSplash.splashFactory : null,
+      platform: TargetPlatform.iOS,
+      splashFactory: NoSplash.splashFactory,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       colorScheme: colorScheme,
       pageTransitionsTheme: getPageTransitionTheme(fillColor: scaffoldBackgroundColor),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        shape: kIsCupertino ? CircleBorder() : null,
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        elevation: 0.0,
+        focusElevation: 0.0,
+        hoverElevation: 0.0,
+        highlightElevation: 0.0,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
       ),
       cupertinoOverrideTheme: CupertinoThemeData(
         brightness: colorScheme.brightness,
@@ -145,6 +153,7 @@ class AppTheme extends StatelessWidget {
         color: colorScheme.readOnly.surface5,
       ),
       appBarTheme: AppBarTheme(
+        centerTitle: true,
         titleSpacing: NavigationToolbar.kMiddleSpacing,
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
@@ -161,33 +170,71 @@ class AppTheme extends StatelessWidget {
       dividerColor: dividerColor,
       dividerTheme: DividerThemeData(color: dividerColor),
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.0)),
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        filled: true,
+        fillColor: darkMode
+            ? Colors.white.withValues(alpha: 0.06)
+            : Colors.black.withValues(alpha: 0.04),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          side: BorderSide(color: dividerColor),
+          side: BorderSide(color: dividerColor ?? Colors.grey),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         ),
       ),
-      textTheme: GoogleFonts.getTextTheme(
-        GoogleFonts.asMap().keys.contains(fontFamily) ? fontFamily : kDefaultFontFamily,
-        TextTheme(
-          displayLarge: calculateTextStyle(baseTheme.textTheme.displayLarge!, FontWeight.w400),
-          displayMedium: calculateTextStyle(baseTheme.textTheme.displayMedium!, FontWeight.w400),
-          displaySmall: calculateTextStyle(baseTheme.textTheme.displaySmall!, FontWeight.w400),
-          headlineLarge: calculateTextStyle(baseTheme.textTheme.headlineLarge!, FontWeight.w400),
-          headlineMedium: calculateTextStyle(baseTheme.textTheme.headlineMedium!, FontWeight.w400),
-          headlineSmall: calculateTextStyle(baseTheme.textTheme.headlineSmall!, FontWeight.w400),
-          titleLarge: calculateTextStyle(baseTheme.textTheme.titleLarge!, FontWeight.w400),
-          titleMedium: calculateTextStyle(baseTheme.textTheme.titleMedium!, FontWeight.w400),
-          titleSmall: calculateTextStyle(baseTheme.textTheme.titleSmall!, FontWeight.w500),
-          bodyLarge: calculateTextStyle(baseTheme.textTheme.bodyLarge!, FontWeight.w400),
-          bodyMedium: calculateTextStyle(baseTheme.textTheme.bodyMedium!, FontWeight.w400),
-          bodySmall: calculateTextStyle(baseTheme.textTheme.bodySmall!, FontWeight.w400),
-          labelLarge: calculateTextStyle(baseTheme.textTheme.labelLarge!, FontWeight.w500),
-          labelMedium: calculateTextStyle(baseTheme.textTheme.labelMedium!, FontWeight.w500),
-          labelSmall: calculateTextStyle(baseTheme.textTheme.labelSmall!, FontWeight.w500),
-        ),
-      ),
+      textTheme: GoogleFonts.asMap().keys.contains(fontFamily)
+          ? GoogleFonts.getTextTheme(
+              fontFamily,
+              TextTheme(
+                displayLarge: calculateTextStyle(baseTheme.textTheme.displayLarge!, FontWeight.w400),
+                displayMedium: calculateTextStyle(baseTheme.textTheme.displayMedium!, FontWeight.w400),
+                displaySmall: calculateTextStyle(baseTheme.textTheme.displaySmall!, FontWeight.w400),
+                headlineLarge: calculateTextStyle(baseTheme.textTheme.headlineLarge!, FontWeight.w400),
+                headlineMedium: calculateTextStyle(baseTheme.textTheme.headlineMedium!, FontWeight.w400),
+                headlineSmall: calculateTextStyle(baseTheme.textTheme.headlineSmall!, FontWeight.w400),
+                titleLarge: calculateTextStyle(baseTheme.textTheme.titleLarge!, FontWeight.w400),
+                titleMedium: calculateTextStyle(baseTheme.textTheme.titleMedium!, FontWeight.w400),
+                titleSmall: calculateTextStyle(baseTheme.textTheme.titleSmall!, FontWeight.w500),
+                bodyLarge: calculateTextStyle(baseTheme.textTheme.bodyLarge!, FontWeight.w400),
+                bodyMedium: calculateTextStyle(baseTheme.textTheme.bodyMedium!, FontWeight.w400),
+                bodySmall: calculateTextStyle(baseTheme.textTheme.bodySmall!, FontWeight.w400),
+                labelLarge: calculateTextStyle(baseTheme.textTheme.labelLarge!, FontWeight.w500),
+                labelMedium: calculateTextStyle(baseTheme.textTheme.labelMedium!, FontWeight.w500),
+                labelSmall: calculateTextStyle(baseTheme.textTheme.labelSmall!, FontWeight.w500),
+              ),
+            )
+          : TextTheme(
+              displayLarge: calculateTextStyle(baseTheme.textTheme.displayLarge!, FontWeight.w400),
+              displayMedium: calculateTextStyle(baseTheme.textTheme.displayMedium!, FontWeight.w400),
+              displaySmall: calculateTextStyle(baseTheme.textTheme.displaySmall!, FontWeight.w400),
+              headlineLarge: calculateTextStyle(baseTheme.textTheme.headlineLarge!, FontWeight.w400),
+              headlineMedium: calculateTextStyle(baseTheme.textTheme.headlineMedium!, FontWeight.w400),
+              headlineSmall: calculateTextStyle(baseTheme.textTheme.headlineSmall!, FontWeight.w400),
+              titleLarge: calculateTextStyle(baseTheme.textTheme.titleLarge!, FontWeight.w400),
+              titleMedium: calculateTextStyle(baseTheme.textTheme.titleMedium!, FontWeight.w400),
+              titleSmall: calculateTextStyle(baseTheme.textTheme.titleSmall!, FontWeight.w500),
+              bodyLarge: calculateTextStyle(baseTheme.textTheme.bodyLarge!, FontWeight.w400),
+              bodyMedium: calculateTextStyle(baseTheme.textTheme.bodyMedium!, FontWeight.w400),
+              bodySmall: calculateTextStyle(baseTheme.textTheme.bodySmall!, FontWeight.w400),
+              labelLarge: calculateTextStyle(baseTheme.textTheme.labelLarge!, FontWeight.w500),
+              labelMedium: calculateTextStyle(baseTheme.textTheme.labelMedium!, FontWeight.w500),
+              labelSmall: calculateTextStyle(baseTheme.textTheme.labelSmall!, FontWeight.w500),
+            ),
     );
   }
 
@@ -244,7 +291,7 @@ class AppTheme extends StatelessWidget {
         ColorScheme darkScheme;
 
         bool hasDynamicColor = lightDynamic != null && darkDynamic != null;
-        bool useDynamicColor = provider.preferences.colorSeed == null;
+        bool useDynamicColor = false; // Disable Android dynamic colors to force Apple Blue
 
         if (hasDynamicColor && useDynamicColor) {
           lightScheme = lightDynamic;
@@ -256,13 +303,18 @@ class AppTheme extends StatelessWidget {
           lightScheme = ColorScheme.fromSeed(
             seedColor: provider.preferences.colorSeed ?? kDefaultColorSeed,
             brightness: Brightness.light,
-            dynamicSchemeVariant: monochrome ? DynamicSchemeVariant.monochrome : DynamicSchemeVariant.tonalSpot,
+            dynamicSchemeVariant: monochrome ? DynamicSchemeVariant.monochrome : DynamicSchemeVariant.fidelity,
+          ).copyWith(
+            primary: monochrome ? null : (provider.preferences.colorSeed ?? kDefaultColorSeed),
+            surface: Colors.white,
           );
 
           darkScheme = ColorScheme.fromSeed(
             seedColor: provider.preferences.colorSeed ?? kDefaultColorSeed,
             brightness: Brightness.dark,
-            dynamicSchemeVariant: monochrome ? DynamicSchemeVariant.monochrome : DynamicSchemeVariant.tonalSpot,
+            dynamicSchemeVariant: monochrome ? DynamicSchemeVariant.monochrome : DynamicSchemeVariant.fidelity,
+          ).copyWith(
+            primary: monochrome ? null : (provider.preferences.colorSeed ?? kDefaultColorSeed),
           );
         }
 

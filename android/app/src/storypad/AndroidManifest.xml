@@ -3,8 +3,8 @@
     <application>
         <!-- App logo alias for storypad_logo_1_0 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_1_0"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_1_0"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_1_0"
             android:enabled="false"
             android:exported="true">
@@ -16,8 +16,8 @@
 
         <!-- App logo alias for storypad_logo_2_0 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_2_0"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_2_0"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_2_0"
             android:enabled="false"
             android:exported="true">
@@ -29,8 +29,8 @@
 
         <!-- App logo alias for storypad_logo_3_0 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_3_0"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_3_0"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_3_0"
             android:enabled="false"
             android:exported="true">
@@ -42,8 +42,8 @@
 
         <!-- App logo alias for storypad_logo_4_0 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_4_0"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_4_0"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_4_0"
             android:enabled="false"
             android:exported="true">
@@ -55,8 +55,8 @@
 
         <!-- App logo alias for storypad_logo_5_0 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_5_0"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_5_0"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_5_0"
             android:enabled="false"
             android:exported="true">
@@ -68,8 +68,8 @@
 
         <!-- App logo alias for storypad_logo_6_0 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_6_0"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_6_0"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_6_0"
             android:enabled="false"
             android:exported="true">
@@ -81,8 +81,8 @@
 
         <!-- App logo alias for storypad_logo_6_1 -->
         <activity-alias
-            android:name="com.tc.writestory.storypad_logo_6_1"
-            android:targetActivity="com.tc.writestory.MainActivity"
+            android:name="com.ravana.mydiary.storypad_logo_6_1"
+            android:targetActivity="com.ravana.mydiary.MainActivity"
             android:icon="@mipmap/storypad_logo_6_1"
             android:enabled="false"
             android:exported="true">

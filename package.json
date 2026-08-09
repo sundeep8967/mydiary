@@ -1,0 +1,30 @@
+{
+  "name": "storypad",
+  "version": "1.0.0",
+  "description": "📝 **My Diary** is a beautiful, privacy-first, open source journal & diary app designed for people who value simplicity, minimalism, and control over their personal data.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theachoem/storypad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/theachoem/storypad/issues"
+  },
+  "homepage": "https://github.com/theachoem/storypad#readme",
+  "dependencies": {
+    "sharp": "^0.35.3"
+  }
+}

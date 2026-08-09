@@ -31,10 +31,10 @@ class _SoundsTab extends StatelessWidget {
                 bottom: 24.0,
               ),
               sliver: SliverAlignedGrid.count(
-                crossAxisCount: constraints.maxWidth ~/ 115,
+                crossAxisCount: constraints.maxWidth ~/ 125,
                 itemCount: musicSounds.length,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 16.0,
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 24.0,
                 itemBuilder: (context, index) {
                   return buildSoundItem(
                     context: context,
@@ -52,10 +52,10 @@ class _SoundsTab extends StatelessWidget {
                 bottom: 16.0,
               ),
               sliver: SliverAlignedGrid.count(
-                crossAxisCount: constraints.maxWidth ~/ 115,
+                crossAxisCount: constraints.maxWidth ~/ 125,
                 itemCount: relaxSounds.length,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 16.0,
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 24.0,
                 itemBuilder: (context, index) {
                   return buildSoundItem(
                     context: context,

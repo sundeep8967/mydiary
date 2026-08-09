@@ -30,6 +30,9 @@ class _RootContent extends StatelessWidget {
             extendBody: true,
             extendBodyBehindAppBar: true,
             resizeToAvoidBottomInset: false,
+            bottomNavigationBar: WindowedDetectorService.isBigWindow(context) 
+                ? null 
+                : RootBottomNavBar(rootProvider: rootProvider),
             body: Stack(
               children: [
                 // Use inner of scaffold context instead of root context.

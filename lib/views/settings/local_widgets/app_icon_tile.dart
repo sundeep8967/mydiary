@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/core/constants/app_constants.dart';
@@ -21,13 +22,14 @@ class AppIconTile extends StatelessWidget {
     return SpSingleStateWidget.listen(
       initialValue: DateTime.now(),
       builder: (context, rebuildAt, notifier) {
-        return ListTile(
+        return CupertinoListTile.notched(
           title: Text(tr('general.app_icon')),
-          trailing: locked ? const Icon(SpIcons.lock) : null,
+          additionalInfo: locked ? const Icon(SpIcons.lock, size: 16) : null,
+          trailing: const CupertinoListTileChevron(),
           leading: Container(
             width: 40,
             height: 40,
-            clipBehavior: .hardEdge,
+            clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: Theme.of(context).dividerColor, width: 1.0),

@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/core/types/font_size_option.dart';
@@ -45,10 +46,11 @@ class FontSizeTile extends StatelessWidget {
       label ??= tr('general.default');
     }
 
-    return ListTile(
+    return CupertinoListTile.notched(
       leading: SpSettingIconBadge(weekday: weekday, icon: SpIcons.fontSize),
       title: Text(tr('general.font_size')),
       subtitle: Text(label),
+      trailing: const CupertinoListTileChevron(),
       onTap: () {
         SpFontSizeSheet(
           fontSize: currentFontSize,

@@ -18,6 +18,7 @@ class _EditStoryContent extends StatelessWidget {
     List<StoryPageObject> pages = constructPages();
 
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.transparent,
       appBar: buildAppBar(context),
       body: buildBody(context, pages),
@@ -86,23 +87,7 @@ class _EditStoryContent extends StatelessWidget {
     return AppBar(
       forceMaterialTransparency: true,
       titleSpacing: 0.0,
-      // On large screens, its side padding prevents the divider
-      // from spanning the full width of the screen. To avoid this visual
-      // inconsistency, we hide the divider when the window is large.
-      bottom: WindowedDetectorService.isBigWindow(context)
-          ? null
-          : PreferredSize(
-              preferredSize: const Size.fromHeight(1),
-              child: ValueListenableBuilder(
-                valueListenable: viewModel.pagesManager.pageScrollOffsetNotifier,
-                builder: (BuildContext context, double offset, Widget? child) {
-                  return Opacity(
-                    opacity: offset.clamp(0.0, 8.0) / 8.0,
-                    child: const Divider(height: 1),
-                  );
-                },
-              ),
-            ),
+      bottom: null,
       leading: SpAnimatedIcons.fadeScale(
         showFirst: viewModel.pagesManager.managingPage,
         firstChild: CloseButton(onPressed: () => viewModel.pagesManager.toggleManagingPage()),

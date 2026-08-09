@@ -5,20 +5,24 @@
 import 'package:storypad/gen/assets.gen.dart';
 
 enum AppLogo {
-  storypad_1_0(logoName: 'storypad_logo_1_0'),
-  storypad_2_0(logoName: 'storypad_logo_2_0'),
-  storypad_3_0(logoName: 'storypad_logo_3_0'),
-  storypad_4_0(logoName: 'storypad_logo_4_0'),
-  storypad_5_0(logoName: 'storypad_logo_5_0'),
-  storypad_6_0(logoName: 'storypad_logo_6_0'),
-  storypad_6_1(logoName: 'storypad_logo_6_1');
+  arcticons_diary(logoName: 'arcticons_diary'),
+  bi_journal_bookmark_fill(logoName: 'bi_journal_bookmark_fill'),
+  famicons_journal(logoName: 'famicons_journal'),
+  fluent_animal_cat_24_filled(logoName: 'fluent_animal_cat_24_filled'),
+  iconoir_journal(logoName: 'iconoir_journal'),
+  mdi_fruit_grapes(logoName: 'mdi_fruit_grapes'),
+  mingcute_apple_fruit_fill(logoName: 'mingcute_apple_fruit_fill'),
+  ooui_journal_ltr(logoName: 'ooui_journal_ltr'),
+  streamline_ultimate_fruit_banana(logoName: 'streamline_ultimate_fruit_banana'),
+  uil_diary_alt(logoName: 'uil_diary_alt')
+  ;
 
   final String logoName;
 
   String get xcodeLogoName => logoName;
   String get androidActivityAliasName => 'com.tc.writestory.$logoName';
 
-  bool get free => this == AppLogo.storypad_1_0 || this == AppLogo.storypad_2_0;
+  bool get free => this == AppLogo.values.first;
 
   const AppLogo({
     required this.logoName,
@@ -26,20 +30,26 @@ enum AppLogo {
 
   AssetGenImage get asset {
     switch (this) {
-      case .storypad_1_0:
-        return Assets.logos.storypadLogo10.assets.storypadLogo10;
-      case .storypad_2_0:
-        return Assets.logos.storypadLogo20.assets.storypadLogo20;
-      case .storypad_3_0:
-        return Assets.logos.storypadLogo30.assets.storypadLogo30;
-      case .storypad_4_0:
-        return Assets.logos.storypadLogo40.assets.storypadLogo40;
-      case .storypad_5_0:
-        return Assets.logos.storypadLogo50.assets.storypadLogo50;
-      case .storypad_6_0:
-        return Assets.logos.storypadLogo60.assets.storypadLogo60;
-      case .storypad_6_1:
-        return Assets.logos.storypadLogo61.assets.storypadLogo61;
+      case .arcticons_diary:
+        return Assets.logos.arcticonsDiary.assets.arcticonsDiary;
+      case .bi_journal_bookmark_fill:
+        return Assets.logos.biJournalBookmarkFill.assets.biJournalBookmarkFill;
+      case .famicons_journal:
+        return Assets.logos.famiconsJournal.assets.famiconsJournal;
+      case .fluent_animal_cat_24_filled:
+        return Assets.logos.fluentAnimalCat24Filled.assets.fluentAnimalCat24Filled;
+      case .iconoir_journal:
+        return Assets.logos.iconoirJournal.assets.iconoirJournal;
+      case .mdi_fruit_grapes:
+        return Assets.logos.mdiFruitGrapes.assets.mdiFruitGrapes;
+      case .mingcute_apple_fruit_fill:
+        return Assets.logos.mingcuteAppleFruitFill.assets.mingcuteAppleFruitFill;
+      case .ooui_journal_ltr:
+        return Assets.logos.oouiJournalLtr.assets.oouiJournalLtr;
+      case .streamline_ultimate_fruit_banana:
+        return Assets.logos.streamlineUltimateFruitBanana.assets.streamlineUltimateFruitBanana;
+      case .uil_diary_alt:
+        return Assets.logos.uilDiaryAlt.assets.uilDiaryAlt;
     }
   }
 }

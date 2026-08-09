@@ -8,6 +8,7 @@ import 'package:storypad/widgets/sp_app_lock_wrapper.dart';
 import 'package:storypad/widgets/sp_onboarding_wrapper.dart';
 import 'package:storypad/widgets/sp_splash_screen_wrapper.dart';
 
+import 'package:storypad/views/root/local_widgets/root_bottom_nav_bar.dart';
 import 'root_view_model.dart';
 
 part 'root_content.dart';

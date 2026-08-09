@@ -10,7 +10,7 @@ enum SpMapRenderer {
   googleMap,
   flutterMap;
 
-  static SpMapRenderer get defaultRenderer => Platform.isAndroid || Platform.isIOS ? googleMap : flutterMap;
+  static SpMapRenderer get defaultRenderer => flutterMap;
 }
 
 enum SpMapStyle {
@@ -40,9 +40,9 @@ extension SpMapStyleExtension on SpMapStyle {
   String get mapTilerUrlTemplate {
     switch (this) {
       case SpMapStyle.streets:
-        return 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=cWUdEifZoUYEaZRNo6nt';
+        return 'https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png';
       case SpMapStyle.satellite:
-        return 'https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.png?key=cWUdEifZoUYEaZRNo6nt';
+        return 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
     }
   }
 }

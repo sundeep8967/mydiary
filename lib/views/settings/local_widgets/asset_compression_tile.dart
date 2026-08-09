@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/core/types/asset_compression_option.dart';
@@ -34,10 +35,11 @@ class AssetCompressionTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return CupertinoListTile.notched(
       leading: SpSettingIconBadge(weekday: weekday, icon: SpIcons.photo),
       title: Text(tr('list_tile.attachment_compression.title')),
       subtitle: Text(currentAssetCompression.label),
+      trailing: const CupertinoListTileChevron(),
       onTap: () {
         SpAssetCompressionSheet(
           assetCompression: currentAssetCompression,

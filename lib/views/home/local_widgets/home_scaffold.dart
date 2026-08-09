@@ -4,7 +4,7 @@ class _HomeScaffold extends StatelessWidget {
   const _HomeScaffold({
     required this.endDrawer,
     required this.viewModel,
-    required this.appBar,
+    required this.appBarSlivers,
     required this.body,
     required this.floatingActionButton,
     required this.bottomNavigationBar,
@@ -12,7 +12,7 @@ class _HomeScaffold extends StatelessWidget {
 
   final HomeViewModel viewModel;
   final Widget? endDrawer;
-  final Widget appBar;
+  final List<Widget> appBarSlivers;
   final Widget body;
   final Widget floatingActionButton;
   final Widget bottomNavigationBar;
@@ -54,13 +54,12 @@ class _HomeScaffold extends StatelessWidget {
                 controller: viewModel.scrollInfo.scrollController,
                 physics: const AlwaysScrollableScrollPhysics(),
                 slivers: [
-                  appBar,
+                  ...appBarSlivers,
                   body,
                 ],
               ),
             ),
           ),
-          buildTimelineSideBar(context),
           Positioned(
             left: 0,
             right: 0,
@@ -68,31 +67,6 @@ class _HomeScaffold extends StatelessWidget {
             child: const _AppUpdateFloatingButton(),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget buildTimelineSideBar(BuildContext viewContext) {
-    bool bigScreen = WindowedDetectorService.isBigWindow(viewContext);
-
-    return Positioned(
-      bottom: 0,
-      child: SpStoryListMultiEditWrapper.listen(
-        context: viewContext,
-        builder: (context, state) {
-          return Visibility(
-            visible: viewModel.stories != null && !state.editing && !bigScreen,
-            child: _HomeTimelineSideBar(
-              viewModel: viewModel,
-              // when bottom navigation is visible, we should use context for screen padding.
-              // else if bottom nav is not visible, padding from context is 0, so we use view context for padding instead.
-              screenPadding: MediaQuery.of(context).padding.bottom == 0
-                  ? MediaQuery.of(viewContext).padding
-                  : MediaQuery.of(context).padding,
-              backgroundColor: viewModel.scrollInfo.appBar(context).getScaffoldBackgroundColor(context),
-            ),
-          );
-        },
       ),
     );
   }

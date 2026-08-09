@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class SpPopMenuItem {
   final String title;
@@ -124,10 +125,32 @@ class _SpPopupMenuButtonState extends State<SpPopupMenuButton> {
         cacheSize(context);
         if (relativeRect == null) return;
 
-        SpPopMenuItem? result = await showMenu<SpPopMenuItem>(
+        SpPopMenuItem? result = await showCupertinoModalPopup<SpPopMenuItem>(
           context: context,
-          position: relativeRect!,
-          items: widget.items(context).map((e) => buildItem(e)).toList(),
+          builder: (BuildContext context) => CupertinoActionSheet(
+            actions: widget.items(context).map((e) {
+              final isErrorColor = e.titleStyle?.color?.value == Theme.of(context).colorScheme.error.value;
+              return CupertinoActionSheetAction(
+                onPressed: () => Navigator.pop(context, e),
+                isDestructiveAction: isErrorColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (e.leadingIconData != null) ...[
+                      Icon(e.leadingIconData, size: 20.0, color: e.titleStyle?.color),
+                      const SizedBox(width: 8.0),
+                    ],
+                    Text(e.title, style: e.titleStyle),
+                  ],
+                ),
+              );
+            }).toList(),
+            cancelButton: CupertinoActionSheetAction(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+          ),
         );
 
         if (result?.onPressed != null) result!.onPressed!();

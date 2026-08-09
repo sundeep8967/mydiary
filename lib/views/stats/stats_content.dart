@@ -44,6 +44,15 @@ class _StatsContent extends StatelessWidget {
         bottom: TabBar(
           isScrollable: true,
           tabAlignment: .start,
+          splashFactory: NoSplash.splashFactory,
+          overlayColor: const WidgetStatePropertyAll(Colors.transparent),
+          indicatorColor: Theme.of(context).colorScheme.primary,
+          indicatorSize: TabBarIndicatorSize.label,
+          labelColor: Theme.of(context).colorScheme.primary,
+          unselectedLabelColor: Theme.of(context).colorScheme.onSurfaceVariant,
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+          dividerColor: Colors.transparent,
           tabs: [
             Tab(text: tr('general.all')),
             for (int month = 1; month <= 12; month++)
@@ -249,29 +258,30 @@ class _StatsContent extends StatelessWidget {
         ),
     ];
 
-    const double spacing = 8.0;
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final double cardWidth = (constraints.maxWidth - spacing * 2) / 3;
-
-        return Wrap(
-          spacing: spacing,
-          runSpacing: spacing,
-          children: [
-            for (final metric in metrics)
-              SizedBox(
-                width: cardWidth,
-                child: _StatsMetricChip(
-                  icon: metric.icon,
-                  value: metric.value,
-                  label: metric.label,
-                  onTap: metric.onTap,
+    return CupertinoListSection.insetGrouped(
+      margin: EdgeInsets.zero,
+      children: [
+        for (final metric in metrics)
+          CupertinoListTile.notched(
+            leading: Icon(metric.icon, color: Theme.of(context).colorScheme.primary),
+            title: Text(metric.label),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 8.0,
+              children: [
+                Text(
+                  metric.value,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
-              ),
-          ],
-        );
-      },
+                if (metric.onTap != null) const CupertinoListTileChevron(),
+              ],
+            ),
+            onTap: metric.onTap,
+          ),
+      ],
     );
   }
 }

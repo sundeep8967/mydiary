@@ -87,60 +87,48 @@ class SpCalendarDateCell extends StatelessWidget {
       foregroundColor = foregroundColor.withValues(alpha: 0.5);
     }
 
-    if (hasFeelings) {
-      return AnimatedContainer(
-        key: const ValueKey('has-stories-has-feeling'),
-        duration: Durations.medium1,
-        curve: Curves.ease,
-        margin: const EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: backgroundColor,
-        ),
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(4.0),
-        child: FittedBox(
-          child: buildFeelings(
-            feelings: feelings!.where((feeling) => feeling != 'exist_but_not_set').toList(),
-          ),
-        ),
-      );
-    } else if (hasStoriesButNoFeelings) {
-      return AnimatedContainer(
-        key: const ValueKey('has-stories-no-feeling'),
-        duration: Durations.medium1,
-        curve: Curves.ease,
-        margin: const EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: backgroundColor,
-        ),
-        alignment: Alignment.center,
-        child: Icon(SpIcons.check, color: foregroundColor),
-      );
-    } else {
-      return AnimatedContainer(
-        key: const ValueKey('no-stories'),
-        duration: Durations.medium1,
-        curve: Curves.ease,
-        margin: const EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: backgroundColor,
-        ),
-        alignment: Alignment.center,
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
+    return AnimatedContainer(
+      duration: Durations.medium1,
+      curve: Curves.ease,
+      margin: const EdgeInsets.all(4.0),
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: backgroundColor,
+      ),
+      alignment: Alignment.center,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
             DateFormatHelper.d(date, context.locale),
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: foregroundColor,
+              fontWeight: isSelected ? FontWeight.bold : null,
             ),
           ),
-        ),
-      );
-    }
+          if (hasFeelings || hasStoriesButNoFeelings) const SizedBox(height: 2.0),
+          if (hasFeelings)
+            SizedBox(
+              height: 14.0,
+              child: FittedBox(
+                child: buildFeelings(
+                  feelings: feelings!.where((feeling) => feeling != 'exist_but_not_set').toList(),
+                ),
+              ),
+            ),
+          if (!hasFeelings && hasStoriesButNoFeelings)
+            Container(
+              height: 6.0,
+              width: 6.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: foregroundColor.withValues(alpha: 0.8),
+              ),
+            ),
+        ],
+      ),
+    );
   }
 
   Widget buildFeelings({

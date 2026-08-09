@@ -116,13 +116,7 @@ class _PagesLayoutState extends State<_PagesLayout> {
             ),
             Transform(
               transform: Matrix4.identity()..spTranslate(offset - pageIndex * screenWidth),
-              child: Opacity(
-                opacity: datas.opacity,
-                child: const Padding(
-                  padding: EdgeInsetsGeometry.only(top: 8.0),
-                  child: Divider(height: 1, indent: 0.0, endIndent: 0.0),
-                ),
-              ),
+              child: const SizedBox.shrink(),
             ),
           ],
         );

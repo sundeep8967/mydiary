@@ -18,16 +18,19 @@ class _DoneButton extends StatelessWidget {
               (viewModel.flowType == EditingFlowType.create && lastSavedAt != null) ||
               (viewModel.flowType == EditingFlowType.update),
           child: SpFadeIn.bound(
-            child: FilledButton.tonalIcon(
-              icon: SpAnimatedIcons(
-                firstChild: const Icon(SpIcons.save),
-                secondChild: const Icon(SpIcons.check),
-                showFirst: disabled,
-              ),
-              label: Text(tr("button.done")),
-              // use root context for done, it use for pop.
-              // context in this builder will be disposed when readOnly.
+            child: CupertinoButton(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               onPressed: disabled ? null : () => viewModel.done(context),
+              child: Text(
+                tr("button.done"),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17.0,
+                  color: disabled
+                      ? Theme.of(context).disabledColor
+                      : Theme.of(context).colorScheme.primary,
+                ),
+              ),
             ),
           ),
         );

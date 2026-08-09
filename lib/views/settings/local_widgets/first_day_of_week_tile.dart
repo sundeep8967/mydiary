@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/core/types/first_day_of_week_option.dart';
@@ -33,10 +34,11 @@ class FirstDayOfWeekTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return CupertinoListTile.notched(
       leading: SpSettingIconBadge(weekday: weekday, icon: SpIcons.calendar),
       title: Text(tr('list_tile.first_day_of_week.title')),
       subtitle: Text(_label(context, currentFirstDayOfWeek)),
+      trailing: const CupertinoListTileChevron(),
       onTap: () {
         SpFirstDayOfWeekSheet(
           firstDayOfWeek: currentFirstDayOfWeek,

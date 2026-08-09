@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:storypad/app_theme.dart';
@@ -31,7 +32,7 @@ class ColorSeedTile extends StatelessWidget {
         );
       },
       builder: (void Function() open) {
-        return ListTile(
+        return CupertinoListTile.notched(
           title: Text(tr("list_tile.color_seed.title")),
           subtitle: Text(provider.preferences.colorSeedCustomized ? tr("general.custom") : tr("general.default")),
           leading: Container(
@@ -52,6 +53,7 @@ class ColorSeedTile extends StatelessWidget {
               ),
             ),
           ),
+          trailing: const CupertinoListTileChevron(),
           onTap: () {
             open();
           },

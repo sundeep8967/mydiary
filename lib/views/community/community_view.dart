@@ -7,13 +7,12 @@ import 'package:storypad/core/services/analytics/analytics_service.dart';
 import 'package:storypad/core/services/messenger_service.dart';
 import 'package:storypad/core/services/remote_config/remote_config_service.dart';
 import 'package:storypad/core/services/url_opener_service.dart';
-import 'package:storypad/views/developer_options/developer_options_view.dart';
 import 'package:storypad/views/home/home_view.dart';
-import 'package:storypad/views/support_us/support_us_view.dart';
 import 'package:storypad/widgets/sp_fade_in.dart';
 import 'package:storypad/widgets/sp_icons.dart';
 import 'package:storypad/widgets/sp_onboarding_wrapper.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:storypad/widgets/base_view/base_route.dart';
 

@@ -19,11 +19,109 @@ class _HomeContent extends StatelessWidget {
       length: viewModel.months.length,
       child: _HomeScaffold(
         viewModel: viewModel,
-        endDrawer: buildEndDrawer(context),
-        appBar: _HomeAppBar(viewModel: viewModel),
+        endDrawer: null,
+        appBarSlivers: _buildHomeAppBarSlivers(context),
         body: buildBody(context),
         bottomNavigationBar: buildBottomNavigationBar(context),
-        floatingActionButton: buildFloatingButtons(context),
+        floatingActionButton: const SizedBox.shrink(), // Disabled floating buttons for iOS UI
+      ),
+    );
+  }
+
+  List<Widget> _buildHomeAppBarSlivers(BuildContext context) {
+    final enableRelaxSounds = context.read<DevicePreferencesProvider>().enableRelaxSounds ?? false;
+    return [
+      SliverAppBar(
+        forceMaterialTransparency: true,
+        automaticallyImplyLeading: false,
+        pinned: true,
+        floating: true,
+        elevation: 0.0,
+        scrolledUnderElevation: 0.0,
+        forceElevated: false,
+        expandedHeight: viewModel.scrollInfo.appBar(context).getExpandedHeight(),
+        flexibleSpace: _HomeFlexibleSpaceBar(viewModel: viewModel),
+        actions: [
+          if (kIAPEnabled && enableRelaxSounds)
+            IconButton(
+              icon: const Icon(SpIcons.musicNote),
+              onPressed: () {
+                HapticFeedback.lightImpact();
+                RelaxSoundsRoute().push(context);
+              },
+            ),
+          IconButton(
+            icon: const Icon(SpIcons.add),
+            onPressed: () {
+              HapticFeedback.lightImpact();
+              _showAddActionSheet(context);
+            },
+          ),
+          IconButton(
+            icon: const Icon(SpIcons.setting),
+            onPressed: () {
+              HapticFeedback.lightImpact();
+              viewModel.openSettings(context);
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(viewModel.scrollInfo.appBar(context).getTabBarPreferredHeight()),
+          child: _HomeTabBar(viewModel: viewModel),
+        ),
+      ),
+    ];
+  }
+
+  void _showAddActionSheet(BuildContext context) {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => CupertinoActionSheet(
+        title: Text(tr("button.new_story")),
+        actions: <CupertinoActionSheetAction>[
+          CupertinoActionSheetAction(
+            child: Text(tr("button.new_story")),
+            onPressed: () {
+              HapticFeedback.selectionClick();
+              Navigator.pop(context);
+              viewModel.goToNewPage(context);
+            },
+          ),
+          if (kStoryPad && kSupportCamera)
+            CupertinoActionSheetAction(
+              child: Text(tr("button.take_photo")),
+              onPressed: () {
+                HapticFeedback.selectionClick();
+                Navigator.pop(context);
+                viewModel.takePhoto(context);
+              },
+            ),
+          CupertinoActionSheetAction(
+            child: Text(tr("button.record_voice")),
+            onPressed: () {
+              HapticFeedback.selectionClick();
+              Navigator.pop(context);
+              viewModel.goToNewPageWithVoice(context);
+            },
+          ),
+          CupertinoActionSheetAction(
+            child: Text(tr("paywall_features.templates.title")),
+            onPressed: () {
+              HapticFeedback.selectionClick();
+              Navigator.pop(context);
+              viewModel.goToTemplatePage(context);
+            },
+          ),
+        ],
+        cancelButton: CupertinoActionSheetAction(
+          isDefaultAction: true,
+          onPressed: () {
+            HapticFeedback.selectionClick();
+            Navigator.pop(context);
+          },
+          child: Text(tr("button.cancel")),
+        ),
       ),
     );
   }

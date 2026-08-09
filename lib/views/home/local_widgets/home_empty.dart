@@ -27,60 +27,29 @@ class _HomeEmpty extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
             SpTapEffect(
-              effects: [
+              effects: const [
                 SpTapEffectType.touchableOpacity,
                 SpTapEffectType.scaleDown,
               ],
-              onTap: () => SettingsRoute().push(context),
+              onTap: () {
+                HapticFeedback.selectionClick();
+                viewModel.goToNewPage(context);
+              },
               child: Container(
                 padding: const EdgeInsets.all(16.0),
                 child: SpLoopAnimationBuilder(
-                  loopCount: 10,
-                  reverse: false,
-                  duration: const Duration(seconds: 8),
-                  reverseDuration: const Duration(seconds: 8),
+                  loopCount: 0, // Infinite loop
+                  duration: const Duration(seconds: 1),
+                  reverseDuration: const Duration(seconds: 1),
                   builder: (context, value, child) {
-                    IconData iconData;
-
-                    if (value <= 0.25) {
-                      iconData = SpIcons.theme;
-                    } else if (value <= 0.5) {
-                      iconData = SpIcons.darkMode;
-                    } else if (value <= 0.75) {
-                      iconData = SpIcons.lightMode;
-                    } else {
-                      iconData = SpIcons.font;
-                    }
-
-                    return AnimatedSwitcher(
-                      switchInCurve: Curves.easeInOutQuad,
-                      switchOutCurve: Curves.easeInOutQuad,
-                      duration: Durations.long1,
-                      transitionBuilder: (child, animation) {
-                        return FadeTransition(
-                          opacity: animation,
-                          child: ScaleTransition(
-                            scale: animation,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: SpLoopAnimationBuilder(
-                        key: ValueKey(iconData),
-                        duration: const Duration(seconds: 2),
-                        reverseDuration: const Duration(seconds: 2),
-                        builder: (context, value, child) {
-                          return Icon(
-                            iconData,
-                            size: 32.0,
-                            color: Color.lerp(
-                              ColorScheme.of(context).bootstrap.info.color,
-                              ColorScheme.of(context).bootstrap.danger.color,
-                              value,
-                            ),
-                          );
-                        },
+                    return Transform.scale(
+                      scale: 1.0 + (value * 0.2), // Scale up to 1.2x
+                      child: Icon(
+                        SpIcons.add,
+                        size: 36.0,
+                        color: ColorScheme.of(context).primary,
                       ),
                     );
                   },
@@ -98,7 +67,7 @@ class _HomeEmpty extends StatelessWidget {
                   children: [
                     TextSpan(text: message.split("{EDIT_BUTTON}").first),
                     const WidgetSpan(
-                      child: Icon(SpIcons.newStory, size: 16.0),
+                      child: Icon(SpIcons.add, size: 16.0),
                       alignment: PlaceholderAlignment.middle,
                     ),
                     TextSpan(text: message.split("{EDIT_BUTTON}").last),
@@ -106,6 +75,7 @@ class _HomeEmpty extends StatelessWidget {
                 ),
               ),
             ),
+            const Spacer(),
           ],
         ),
       ),

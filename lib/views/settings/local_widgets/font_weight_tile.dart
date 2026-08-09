@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,11 +37,12 @@ class FontWeightTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return CupertinoListTile.notched(
       leading: SpSettingIconBadge(weekday: weekday, icon: SpIcons.fontWeight),
       title: Text(tr("list_tile.font_weight.title")),
       subtitle: Text(getFontWeightTitle(currentFontWeight)),
-      trailing: locked ? const Icon(SpIcons.lock) : null,
+      additionalInfo: locked ? const Icon(SpIcons.lock, size: 16) : null,
+      trailing: const CupertinoListTileChevron(),
       onTap: () {
         SpFontWeightSheet(
           fontWeight: currentFontWeight,

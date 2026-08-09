@@ -940,7 +940,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tc.writestory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ravana.mydiary;
 				PROVISIONING_PROFILE_SPECIFIER = StoryPad;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1150,7 +1150,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tc.writestory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ravana.mydiary;
 				PROVISIONING_PROFILE_SPECIFIER = StoryPad;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1351,7 +1351,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tc.writestory;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ravana.mydiary;
 				PROVISIONING_PROFILE_SPECIFIER = StoryPad;
 				SWIFT_VERSION = 5.0;
 			};

@@ -95,6 +95,19 @@ class StoryPagesManager extends StatelessWidget {
   }
 
   Widget buildPage(BuildContext context, StoryPageObject page, int pageIndex) {
+    final serialized = page.bodyController.serialize();
+    bool hasImages = false;
+    bool hasAudio = false;
+    for (final op in serialized) {
+      if (op is Map && op.containsKey('insert')) {
+        final insertVal = op['insert'];
+        if (insertVal is Map) {
+          if (insertVal.containsKey('image')) hasImages = true;
+          if (insertVal.containsKey('audio')) hasAudio = true;
+        }
+      }
+    }
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -105,11 +118,56 @@ class StoryPagesManager extends StatelessWidget {
           children: [
             buildPageCard(
               context: context,
-              child: Text(page.bodyController.document.toPlainText()),
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Text(
+                      page.bodyController.getPlainText(),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontSize: 10,
+                        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+                      ),
+                      maxLines: 8,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  if (hasImages || hasAudio)
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.9),
+                          borderRadius: BorderRadius.circular(4.0),
+                          border: Border.all(color: Theme.of(context).dividerColor, width: 0.5),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (hasImages)
+                              Icon(
+                                SpIcons.photo,
+                                size: 10,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            if (hasImages && hasAudio) const SizedBox(width: 4),
+                            if (hasAudio)
+                              Icon(
+                                SpIcons.voice,
+                                size: 10,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                          ],
+                        ),
+                      ),
+                    ),
+                ],
+              ),
               onTap: () {
                 HapticFeedback.selectionClick();
                 viewModel.pagesManager.toggleManagingPage();
-
+ 
                 if (viewModel.pagesManager.pageScrollController.hasClients) {
                   viewModel.pagesManager.scrollToPage(page.id);
                 } else if (viewModel.pagesManager.pageController.hasClients) {

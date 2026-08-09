@@ -30,28 +30,21 @@ class _SearchContent extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: !CupertinoSheetRoute.hasParentSheet(context),
-        title: TextField(
+        title: CupertinoSearchTextField(
           controller: viewModel.queryController,
-          textInputAction: TextInputAction.search,
-          style: Theme.of(context).appBarTheme.titleTextStyle,
-          keyboardType: TextInputType.text,
-          autofocus: false,
-          decoration: InputDecoration(
-            hintText: tr("input.story_search.hint"),
-            border: InputBorder.none,
+          placeholder: tr("input.story_search.hint"),
+          placeholderStyle: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+            fontSize: 15.0,
+          ),
+          style: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
+            fontSize: 15.0,
           ),
           onChanged: (value) => viewModel.searchText(value),
           onSubmitted: (value) => viewModel.searchText(value),
+          onSuffixTap: () => viewModel.clearQuery(context),
         ),
         actions: [
-          Visibility(
-            visible: viewModel.hasQuery,
-            child: IconButton(
-              tooltip: tr("button.clear"),
-              icon: const Icon(SpIcons.backspace),
-              onPressed: () => viewModel.clearQuery(context),
-            ),
-          ),
           IconButton(
             tooltip: tr("page.search_filter.title"),
             icon: const Icon(SpIcons.tune),

@@ -4,4 +4,15 @@
     <color name="splash_background_dark">#121212</color>
     <color name="shortcut_icon_background">#F5F5F5</color>
     <color name="shortcut_icon_foreground">#1F1F1F</color>
+    <color name="arcticons_diary_background">#FFFFFF</color>
+    <color name="bi_journal_bookmark_fill_background">#FFFFFF</color>
+    <color name="fluent_animal_cat_24_filled_background">#FFFFFF</color>
+    <color name="iconoir_journal_background">#FFFFFF</color>
+    <color name="mdi_fruit_grapes_background">#FFFFFF</color>
+    <color name="mingcute_apple_fruit_fill_background">#FFFFFF</color>
+    <color name="streamline_ultimate_fruit_banana_background">#FFFFFF</color>
+    <color name="famicons_journal_background">#FFFFFF</color>
+    <color name="ooui_journal_ltr_background">#FFFFFF</color>
+    <color name="uil_diary_alt_background">#FFFFFF</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

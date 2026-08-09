@@ -45,7 +45,7 @@ class OnboardingTemplate extends StatelessWidget {
     double bottomBarHeight = MediaQuery.of(context).padding.bottom + 24;
 
     double dividerHeight = demo == null ? 0 : 1;
-    double spacingBetweenSection = 36;
+    double spacingBetweenSection = 56;
     double demoHeight = demo == null ? 240 : 360.0 + 48.0;
 
     double pageHeight = MediaQuery.of(context).size.height;
@@ -154,12 +154,30 @@ class OnboardingTemplate extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (currentStep != maxStep) ...[
-          Text("$currentStep / $maxStep"),
-          const SizedBox(height: 24.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(maxStep, (index) {
+              bool isActive = (index + 1) == currentStep;
+              return AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOutCubic,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                height: 8.0,
+                width: isActive ? 24.0 : 8.0,
+                decoration: BoxDecoration(
+                  color: isActive
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+              );
+            }),
+          ),
+          const SizedBox(height: 32.0),
         ],
         if (currentStep == maxStep) ...[
           _PrivacyPolicyText(context: context),
-          const SizedBox(height: 24.0),
+          const SizedBox(height: 32.0),
         ],
         actionButton,
       ],

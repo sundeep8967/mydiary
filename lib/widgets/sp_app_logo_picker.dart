@@ -19,7 +19,7 @@ class SpAppLogoPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Make sure male logo is always first to avoid in appropriate display.
-    final logos = {AppLogo.storypad_2_0, ...AppLogo.values};
+    final logos = AppLogo.values;
     final iapProvider = Provider.of<InAppPurchaseProvider>(context);
 
     return SizedBox(

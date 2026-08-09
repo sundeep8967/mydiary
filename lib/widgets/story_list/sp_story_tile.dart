@@ -5,6 +5,7 @@ import 'package:storypad/app_theme.dart';
 import 'package:storypad/core/databases/models/story_content_db_model.dart';
 import 'package:storypad/core/databases/models/story_db_model.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:storypad/core/extensions/matrix_4_extension.dart';
 import 'package:storypad/core/extensions/string_extension.dart';
 import 'package:storypad/core/objects/story_tile_preferences_object.dart';
@@ -167,7 +168,8 @@ class SpStoryTile extends StatelessWidget {
         }
 
         return SpTapEffect(
-          effects: [SpTapEffectType.touchableOpacity],
+          effects: const [SpTapEffectType.touchableOpacity, SpTapEffectType.scaleDown],
+          scaleActive: 0.95,
           onTap: onTap,
           onLongPressed: onLongPress,
           child: Container(
@@ -211,7 +213,7 @@ class SpStoryTile extends StatelessWidget {
               ],
             ),
           ),
-        );
+        ).animate().fadeIn(duration: 300.ms).slideY(begin: 0.1, end: 0, duration: 300.ms, curve: Curves.easeOutQuad);
       },
     );
   }

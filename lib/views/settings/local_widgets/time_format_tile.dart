@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:storypad/core/types/time_format_option.dart';
@@ -34,10 +35,11 @@ class TimeFormatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return CupertinoListTile.notched(
       leading: SpSettingIconBadge(weekday: weekday, icon: SpIcons.timer),
       title: Text(tr('general.time_format')),
       subtitle: Text(currentTimeFormat.label),
+      trailing: const CupertinoListTileChevron(),
       onTap: () {
         SpTimeFormatSheet(
           timeFormat: currentTimeFormat,

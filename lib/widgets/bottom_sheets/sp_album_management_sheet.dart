@@ -160,7 +160,7 @@ class _ContentState extends State<_Content> {
         ),
         padding: EdgeInsets.only(bottom: widget.bottomPadding),
         itemCount: _paths.length,
-        onReorderItem: (oldIndex, newIndex) {
+        onReorder: (int oldIndex, int newIndex) {
           setState(() {
             final item = _paths.removeAt(oldIndex);
             _paths.insert(newIndex, item);

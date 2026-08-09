@@ -11,26 +11,20 @@ class _NextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: Builder(
-        builder: (context) {
-          if (kIsCupertino) {
-            return CupertinoButton.filled(
-              disabledColor: Theme.of(context).disabledColor,
-              sizeStyle: CupertinoButtonSize.medium,
-              child: Text(tr("button.next")),
-              onPressed: () => viewModel.next(context),
-            );
-          } else {
-            return SizedBox(
-              height: 48,
-              child: FilledButton(
-                style: FilledButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0))),
-                child: Text(tr("button.next")),
-                onPressed: () => viewModel.next(context),
-              ),
-            );
-          }
-        },
+      child: CupertinoButton(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        color: Theme.of(context).colorScheme.primary,
+        disabledColor: Theme.of(context).disabledColor,
+        borderRadius: BorderRadius.circular(14), // Modern iOS prominent button radius
+        onPressed: () => viewModel.next(context),
+        child: Text(
+          tr("button.next"),
+          style: const TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w600,
+            color: CupertinoColors.white,
+          ),
+        ),
       ),
     );
   }

@@ -17,74 +17,39 @@ class _NicknameField extends StatelessWidget {
         return null;
       },
       builder: (state) {
-        if (kIsCupertino) {
-          return buildCupertinoField(state, context);
-        } else {
-          return buildMaterialField(state, context);
-        }
-      },
-    );
-  }
-
-  TextFormField buildMaterialField(FormFieldState<String> state, BuildContext context) {
-    InputBorder border = OutlineInputBorder(
-      borderSide: state.hasError
-          ? BorderSide(color: Theme.of(context).colorScheme.error, width: 2.0)
-          : BorderSide(color: Theme.of(context).dividerColor),
-      borderRadius: BorderRadius.circular(12.0),
-    );
-
-    return TextFormField(
-      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-      onFieldSubmitted: (value) => viewModel.next(context),
-      controller: viewModel.controller,
-      textAlign: TextAlign.center,
-      onChanged: (value) => state.didChange(value),
-      decoration: InputDecoration(
-        border: border,
-        enabledBorder: border,
-        focusedBorder: border,
-        hintText: tr("input.nickname.hint"),
-      ),
-    );
-  }
-
-  CupertinoTextField buildCupertinoField(FormFieldState<String> state, BuildContext context) {
-    BoxDecoration decoration;
-
-    if (state.hasError) {
-      decoration = BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0),
-        border: Border.all(color: Theme.of(context).colorScheme.error),
-      );
-    } else {
-      // base on [_kDefaultRoundedBorderDecoration]
-      decoration = BoxDecoration(
-        color: const CupertinoDynamicColor.withBrightness(
-          color: CupertinoColors.white,
-          darkColor: CupertinoColors.black,
-        ),
-        border: Border.all(
-          width: 0.0,
-          color: const CupertinoDynamicColor.withBrightness(
-            color: Color(0x33000000),
-            darkColor: Color(0x33FFFFFF),
+        final hasError = state.hasError;
+        
+        return CupertinoTextField(
+          controller: viewModel.controller,
+          placeholder: tr("input.nickname.hint"),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          clearButtonMode: OverlayVisibilityMode.editing,
+          keyboardType: TextInputType.name,
+          textCapitalization: TextCapitalization.words,
+          autocorrect: false,
+          style: TextStyle(
+            color: CupertinoDynamicColor.resolve(CupertinoColors.label, context),
+            fontSize: 17,
           ),
-        ),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(5.0),
-        ),
-      );
-    }
-
-    return CupertinoTextField(
-      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-      onSubmitted: (value) => viewModel.next(context),
-      controller: viewModel.controller,
-      textAlign: TextAlign.center,
-      onChanged: (value) => state.didChange(value),
-      decoration: decoration,
-      placeholder: tr("input.nickname.hint"),
+          placeholderStyle: TextStyle(
+            color: CupertinoDynamicColor.resolve(CupertinoColors.placeholderText, context),
+            fontSize: 17,
+          ),
+          decoration: BoxDecoration(
+            color: CupertinoDynamicColor.resolve(
+              CupertinoColors.secondarySystemFill, 
+              context,
+            ),
+            borderRadius: BorderRadius.circular(10),
+            border: hasError 
+                ? Border.all(color: CupertinoColors.destructiveRed, width: 1.5)
+                : null,
+          ),
+          onChanged: state.didChange,
+          onSubmitted: (value) => viewModel.next(context),
+          onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+        );
+      },
     );
   }
 }

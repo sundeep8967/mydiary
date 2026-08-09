@@ -438,33 +438,46 @@ class $AssetsImagesGen {
 class $AssetsLogosGen {
   const $AssetsLogosGen();
 
-  /// Directory path: assets/logos/storypad_logo_1_0.icon
-  $AssetsLogosStorypadLogo10IconGen get storypadLogo10 =>
-      const $AssetsLogosStorypadLogo10IconGen();
+  /// Directory path: assets/logos/arcticons_diary.icon
+  $AssetsLogosArcticonsDiaryIconGen get arcticonsDiary =>
+      const $AssetsLogosArcticonsDiaryIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_2_0.icon
-  $AssetsLogosStorypadLogo20IconGen get storypadLogo20 =>
-      const $AssetsLogosStorypadLogo20IconGen();
+  /// Directory path: assets/logos/bi_journal_bookmark_fill.icon
+  $AssetsLogosBiJournalBookmarkFillIconGen get biJournalBookmarkFill =>
+      const $AssetsLogosBiJournalBookmarkFillIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_3_0.icon
-  $AssetsLogosStorypadLogo30IconGen get storypadLogo30 =>
-      const $AssetsLogosStorypadLogo30IconGen();
+  /// Directory path: assets/logos/famicons_journal.icon
+  $AssetsLogosFamiconsJournalIconGen get famiconsJournal =>
+      const $AssetsLogosFamiconsJournalIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_4_0.icon
-  $AssetsLogosStorypadLogo40IconGen get storypadLogo40 =>
-      const $AssetsLogosStorypadLogo40IconGen();
+  /// Directory path: assets/logos/fluent_animal_cat_24_filled.icon
+  $AssetsLogosFluentAnimalCat24FilledIconGen get fluentAnimalCat24Filled =>
+      const $AssetsLogosFluentAnimalCat24FilledIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_5_0.icon
-  $AssetsLogosStorypadLogo50IconGen get storypadLogo50 =>
-      const $AssetsLogosStorypadLogo50IconGen();
+  /// Directory path: assets/logos/iconoir_journal.icon
+  $AssetsLogosIconoirJournalIconGen get iconoirJournal =>
+      const $AssetsLogosIconoirJournalIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_6_0.icon
-  $AssetsLogosStorypadLogo60IconGen get storypadLogo60 =>
-      const $AssetsLogosStorypadLogo60IconGen();
+  /// Directory path: assets/logos/mdi_fruit_grapes.icon
+  $AssetsLogosMdiFruitGrapesIconGen get mdiFruitGrapes =>
+      const $AssetsLogosMdiFruitGrapesIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_6_1.icon
-  $AssetsLogosStorypadLogo61IconGen get storypadLogo61 =>
-      const $AssetsLogosStorypadLogo61IconGen();
+  /// Directory path: assets/logos/mingcute_apple_fruit_fill.icon
+  $AssetsLogosMingcuteAppleFruitFillIconGen get mingcuteAppleFruitFill =>
+      const $AssetsLogosMingcuteAppleFruitFillIconGen();
+
+  /// Directory path: assets/logos/ooui_journal_ltr.icon
+  $AssetsLogosOouiJournalLtrIconGen get oouiJournalLtr =>
+      const $AssetsLogosOouiJournalLtrIconGen();
+
+  /// Directory path: assets/logos/streamline_ultimate_fruit_banana.icon
+  $AssetsLogosStreamlineUltimateFruitBananaIconGen
+  get streamlineUltimateFruitBanana =>
+      const $AssetsLogosStreamlineUltimateFruitBananaIconGen();
+
+  /// Directory path: assets/logos/uil_diary_alt.icon
+  $AssetsLogosUilDiaryAltIconGen get uilDiaryAlt =>
+      const $AssetsLogosUilDiaryAltIconGen();
 }
 
 class $AssetsImagesOnboardingGen {
@@ -555,144 +568,204 @@ class $AssetsImagesOnboardingGen {
   ];
 }
 
-class $AssetsLogosStorypadLogo10IconGen {
-  const $AssetsLogosStorypadLogo10IconGen();
+class $AssetsLogosArcticonsDiaryIconGen {
+  const $AssetsLogosArcticonsDiaryIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_1_0.icon/Assets
-  $AssetsLogosStorypadLogo10IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo10IconAssetsGen();
+  /// Directory path: assets/logos/arcticons_diary.icon/Assets
+  $AssetsLogosArcticonsDiaryIconAssetsGen get assets =>
+      const $AssetsLogosArcticonsDiaryIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo20IconGen {
-  const $AssetsLogosStorypadLogo20IconGen();
+class $AssetsLogosBiJournalBookmarkFillIconGen {
+  const $AssetsLogosBiJournalBookmarkFillIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_2_0.icon/Assets
-  $AssetsLogosStorypadLogo20IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo20IconAssetsGen();
+  /// Directory path: assets/logos/bi_journal_bookmark_fill.icon/Assets
+  $AssetsLogosBiJournalBookmarkFillIconAssetsGen get assets =>
+      const $AssetsLogosBiJournalBookmarkFillIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo30IconGen {
-  const $AssetsLogosStorypadLogo30IconGen();
+class $AssetsLogosFamiconsJournalIconGen {
+  const $AssetsLogosFamiconsJournalIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_3_0.icon/Assets
-  $AssetsLogosStorypadLogo30IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo30IconAssetsGen();
+  /// Directory path: assets/logos/famicons_journal.icon/Assets
+  $AssetsLogosFamiconsJournalIconAssetsGen get assets =>
+      const $AssetsLogosFamiconsJournalIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo40IconGen {
-  const $AssetsLogosStorypadLogo40IconGen();
+class $AssetsLogosFluentAnimalCat24FilledIconGen {
+  const $AssetsLogosFluentAnimalCat24FilledIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_4_0.icon/Assets
-  $AssetsLogosStorypadLogo40IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo40IconAssetsGen();
+  /// Directory path: assets/logos/fluent_animal_cat_24_filled.icon/Assets
+  $AssetsLogosFluentAnimalCat24FilledIconAssetsGen get assets =>
+      const $AssetsLogosFluentAnimalCat24FilledIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo50IconGen {
-  const $AssetsLogosStorypadLogo50IconGen();
+class $AssetsLogosIconoirJournalIconGen {
+  const $AssetsLogosIconoirJournalIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_5_0.icon/Assets
-  $AssetsLogosStorypadLogo50IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo50IconAssetsGen();
+  /// Directory path: assets/logos/iconoir_journal.icon/Assets
+  $AssetsLogosIconoirJournalIconAssetsGen get assets =>
+      const $AssetsLogosIconoirJournalIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo60IconGen {
-  const $AssetsLogosStorypadLogo60IconGen();
+class $AssetsLogosMdiFruitGrapesIconGen {
+  const $AssetsLogosMdiFruitGrapesIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_6_0.icon/Assets
-  $AssetsLogosStorypadLogo60IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo60IconAssetsGen();
+  /// Directory path: assets/logos/mdi_fruit_grapes.icon/Assets
+  $AssetsLogosMdiFruitGrapesIconAssetsGen get assets =>
+      const $AssetsLogosMdiFruitGrapesIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo61IconGen {
-  const $AssetsLogosStorypadLogo61IconGen();
+class $AssetsLogosMingcuteAppleFruitFillIconGen {
+  const $AssetsLogosMingcuteAppleFruitFillIconGen();
 
-  /// Directory path: assets/logos/storypad_logo_6_1.icon/Assets
-  $AssetsLogosStorypadLogo61IconAssetsGen get assets =>
-      const $AssetsLogosStorypadLogo61IconAssetsGen();
+  /// Directory path: assets/logos/mingcute_apple_fruit_fill.icon/Assets
+  $AssetsLogosMingcuteAppleFruitFillIconAssetsGen get assets =>
+      const $AssetsLogosMingcuteAppleFruitFillIconAssetsGen();
 }
 
-class $AssetsLogosStorypadLogo10IconAssetsGen {
-  const $AssetsLogosStorypadLogo10IconAssetsGen();
+class $AssetsLogosOouiJournalLtrIconGen {
+  const $AssetsLogosOouiJournalLtrIconGen();
 
-  /// File path: assets/logos/storypad_logo_1_0.icon/Assets/storypad_logo_1_0.png
-  AssetGenImage get storypadLogo10 => const AssetGenImage(
-    'assets/logos/storypad_logo_1_0.icon/Assets/storypad_logo_1_0.png',
+  /// Directory path: assets/logos/ooui_journal_ltr.icon/Assets
+  $AssetsLogosOouiJournalLtrIconAssetsGen get assets =>
+      const $AssetsLogosOouiJournalLtrIconAssetsGen();
+}
+
+class $AssetsLogosStreamlineUltimateFruitBananaIconGen {
+  const $AssetsLogosStreamlineUltimateFruitBananaIconGen();
+
+  /// Directory path: assets/logos/streamline_ultimate_fruit_banana.icon/Assets
+  $AssetsLogosStreamlineUltimateFruitBananaIconAssetsGen get assets =>
+      const $AssetsLogosStreamlineUltimateFruitBananaIconAssetsGen();
+}
+
+class $AssetsLogosUilDiaryAltIconGen {
+  const $AssetsLogosUilDiaryAltIconGen();
+
+  /// Directory path: assets/logos/uil_diary_alt.icon/Assets
+  $AssetsLogosUilDiaryAltIconAssetsGen get assets =>
+      const $AssetsLogosUilDiaryAltIconAssetsGen();
+}
+
+class $AssetsLogosArcticonsDiaryIconAssetsGen {
+  const $AssetsLogosArcticonsDiaryIconAssetsGen();
+
+  /// File path: assets/logos/arcticons_diary.icon/Assets/arcticons_diary.png
+  AssetGenImage get arcticonsDiary => const AssetGenImage(
+    'assets/logos/arcticons_diary.icon/Assets/arcticons_diary.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo10];
+  List<AssetGenImage> get values => [arcticonsDiary];
 }
 
-class $AssetsLogosStorypadLogo20IconAssetsGen {
-  const $AssetsLogosStorypadLogo20IconAssetsGen();
+class $AssetsLogosBiJournalBookmarkFillIconAssetsGen {
+  const $AssetsLogosBiJournalBookmarkFillIconAssetsGen();
 
-  /// File path: assets/logos/storypad_logo_2_0.icon/Assets/storypad_logo_2_0.png
-  AssetGenImage get storypadLogo20 => const AssetGenImage(
-    'assets/logos/storypad_logo_2_0.icon/Assets/storypad_logo_2_0.png',
+  /// File path: assets/logos/bi_journal_bookmark_fill.icon/Assets/bi_journal_bookmark_fill.png
+  AssetGenImage get biJournalBookmarkFill => const AssetGenImage(
+    'assets/logos/bi_journal_bookmark_fill.icon/Assets/bi_journal_bookmark_fill.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo20];
+  List<AssetGenImage> get values => [biJournalBookmarkFill];
 }
 
-class $AssetsLogosStorypadLogo30IconAssetsGen {
-  const $AssetsLogosStorypadLogo30IconAssetsGen();
+class $AssetsLogosFamiconsJournalIconAssetsGen {
+  const $AssetsLogosFamiconsJournalIconAssetsGen();
 
-  /// File path: assets/logos/storypad_logo_3_0.icon/Assets/storypad_logo_3_0.png
-  AssetGenImage get storypadLogo30 => const AssetGenImage(
-    'assets/logos/storypad_logo_3_0.icon/Assets/storypad_logo_3_0.png',
+  /// File path: assets/logos/famicons_journal.icon/Assets/famicons_journal.png
+  AssetGenImage get famiconsJournal => const AssetGenImage(
+    'assets/logos/famicons_journal.icon/Assets/famicons_journal.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo30];
+  List<AssetGenImage> get values => [famiconsJournal];
 }
 
-class $AssetsLogosStorypadLogo40IconAssetsGen {
-  const $AssetsLogosStorypadLogo40IconAssetsGen();
+class $AssetsLogosFluentAnimalCat24FilledIconAssetsGen {
+  const $AssetsLogosFluentAnimalCat24FilledIconAssetsGen();
 
-  /// File path: assets/logos/storypad_logo_4_0.icon/Assets/storypad_logo_4_0.png
-  AssetGenImage get storypadLogo40 => const AssetGenImage(
-    'assets/logos/storypad_logo_4_0.icon/Assets/storypad_logo_4_0.png',
+  /// File path: assets/logos/fluent_animal_cat_24_filled.icon/Assets/fluent_animal_cat_24_filled.png
+  AssetGenImage get fluentAnimalCat24Filled => const AssetGenImage(
+    'assets/logos/fluent_animal_cat_24_filled.icon/Assets/fluent_animal_cat_24_filled.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo40];
+  List<AssetGenImage> get values => [fluentAnimalCat24Filled];
 }
 
-class $AssetsLogosStorypadLogo50IconAssetsGen {
-  const $AssetsLogosStorypadLogo50IconAssetsGen();
+class $AssetsLogosIconoirJournalIconAssetsGen {
+  const $AssetsLogosIconoirJournalIconAssetsGen();
 
-  /// File path: assets/logos/storypad_logo_5_0.icon/Assets/storypad_logo_5_0.png
-  AssetGenImage get storypadLogo50 => const AssetGenImage(
-    'assets/logos/storypad_logo_5_0.icon/Assets/storypad_logo_5_0.png',
+  /// File path: assets/logos/iconoir_journal.icon/Assets/iconoir_journal.png
+  AssetGenImage get iconoirJournal => const AssetGenImage(
+    'assets/logos/iconoir_journal.icon/Assets/iconoir_journal.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo50];
+  List<AssetGenImage> get values => [iconoirJournal];
 }
 
-class $AssetsLogosStorypadLogo60IconAssetsGen {
-  const $AssetsLogosStorypadLogo60IconAssetsGen();
+class $AssetsLogosMdiFruitGrapesIconAssetsGen {
+  const $AssetsLogosMdiFruitGrapesIconAssetsGen();
 
-  /// File path: assets/logos/storypad_logo_6_0.icon/Assets/storypad_logo_6_0.png
-  AssetGenImage get storypadLogo60 => const AssetGenImage(
-    'assets/logos/storypad_logo_6_0.icon/Assets/storypad_logo_6_0.png',
+  /// File path: assets/logos/mdi_fruit_grapes.icon/Assets/mdi_fruit_grapes.png
+  AssetGenImage get mdiFruitGrapes => const AssetGenImage(
+    'assets/logos/mdi_fruit_grapes.icon/Assets/mdi_fruit_grapes.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo60];
+  List<AssetGenImage> get values => [mdiFruitGrapes];
 }
 
-class $AssetsLogosStorypadLogo61IconAssetsGen {
-  const $AssetsLogosStorypadLogo61IconAssetsGen();
+class $AssetsLogosMingcuteAppleFruitFillIconAssetsGen {
+  const $AssetsLogosMingcuteAppleFruitFillIconAssetsGen();
 
-  /// File path: assets/logos/storypad_logo_6_1.icon/Assets/storypad_logo_6_1.png
-  AssetGenImage get storypadLogo61 => const AssetGenImage(
-    'assets/logos/storypad_logo_6_1.icon/Assets/storypad_logo_6_1.png',
+  /// File path: assets/logos/mingcute_apple_fruit_fill.icon/Assets/mingcute_apple_fruit_fill.png
+  AssetGenImage get mingcuteAppleFruitFill => const AssetGenImage(
+    'assets/logos/mingcute_apple_fruit_fill.icon/Assets/mingcute_apple_fruit_fill.png',
   );
 
   /// List of all assets
-  List<AssetGenImage> get values => [storypadLogo61];
+  List<AssetGenImage> get values => [mingcuteAppleFruitFill];
+}
+
+class $AssetsLogosOouiJournalLtrIconAssetsGen {
+  const $AssetsLogosOouiJournalLtrIconAssetsGen();
+
+  /// File path: assets/logos/ooui_journal_ltr.icon/Assets/ooui_journal_ltr.png
+  AssetGenImage get oouiJournalLtr => const AssetGenImage(
+    'assets/logos/ooui_journal_ltr.icon/Assets/ooui_journal_ltr.png',
+  );
+
+  /// List of all assets
+  List<AssetGenImage> get values => [oouiJournalLtr];
+}
+
+class $AssetsLogosStreamlineUltimateFruitBananaIconAssetsGen {
+  const $AssetsLogosStreamlineUltimateFruitBananaIconAssetsGen();
+
+  /// File path: assets/logos/streamline_ultimate_fruit_banana.icon/Assets/streamline_ultimate_fruit_banana.png
+  AssetGenImage get streamlineUltimateFruitBanana => const AssetGenImage(
+    'assets/logos/streamline_ultimate_fruit_banana.icon/Assets/streamline_ultimate_fruit_banana.png',
+  );
+
+  /// List of all assets
+  List<AssetGenImage> get values => [streamlineUltimateFruitBanana];
+}
+
+class $AssetsLogosUilDiaryAltIconAssetsGen {
+  const $AssetsLogosUilDiaryAltIconAssetsGen();
+
+  /// File path: assets/logos/uil_diary_alt.icon/Assets/uil_diary_alt.png
+  AssetGenImage get uilDiaryAlt => const AssetGenImage(
+    'assets/logos/uil_diary_alt.icon/Assets/uil_diary_alt.png',
+  );
+
+  /// List of all assets
+  List<AssetGenImage> get values => [uilDiaryAlt];
 }
 
 class Assets {
@@ -702,11 +775,29 @@ class Assets {
   static const String firestoreStorageMap = 'assets/firestore_storage_map.json';
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLogosGen logos = $AssetsLogosGen();
+  static const AssetGenImage myDiaryIcon = AssetGenImage(
+    'assets/my_diary_icon.png',
+  );
+  static const AssetGenImage myDiaryIconTransparent = AssetGenImage(
+    'assets/my_diary_icon_transparent.png',
+  );
+  static const AssetGenImage myDiaryLogoBlack = AssetGenImage(
+    'assets/my_diary_logo_black.png',
+  );
+  static const AssetGenImage myDiaryLogoPastel = AssetGenImage(
+    'assets/my_diary_logo_pastel.png',
+  );
   static const $TemplatesGen templates = $TemplatesGen();
   static const $TranslationsGen translations = $TranslationsGen();
 
   /// List of all assets
-  static List<String> get values => [firestoreStorageMap];
+  static List<dynamic> get values => [
+    firestoreStorageMap,
+    myDiaryIcon,
+    myDiaryIconTransparent,
+    myDiaryLogoBlack,
+    myDiaryLogoPastel,
+  ];
 }
 
 class AssetGenImage {

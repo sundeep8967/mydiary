@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -122,49 +124,51 @@ class SpPagesToolbarState extends State<SpPagesToolbar> {
 
   @override
   Widget build(BuildContext context) {
+    bool isVisible = !widget.managingPage && (titleFocused || bodyFocusedIndex != null);
+
     return Visibility(
-      visible: !widget.managingPage,
-      child: Stack(
-        fit: StackFit.loose,
-        children: [
-          if (titleFocused) buildTitleToolbar(context),
-          if (!titleFocused)
-            ...List.generate(
-              widget.pages.length,
-              (index) {
-                return Visibility(
-                  visible: index == bodyFocusedIndex,
-                  child: Container(
-                    color: widget.backgroundColor,
-                    padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).padding.bottom + MediaQuery.of(context).viewInsets.bottom,
-                    ),
-                    child: editorAdapter.buildToolbar(
-                      context: context,
-                      controller: widget.pages[index].bodyController,
-                      backgroundColor: widget.backgroundColor,
-                    ),
-                  ),
-                );
-              },
+      visible: isVisible,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 8.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(100.0),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: Container(
+                color: widget.backgroundColor?.withValues(alpha: 0.75) ?? Theme.of(context).colorScheme.surface.withValues(alpha: 0.75),
+                child: Stack(
+                  fit: StackFit.loose,
+                  children: [
+                    if (titleFocused) buildTitleToolbar(context),
+                    if (!titleFocused)
+                      ...List.generate(
+                        widget.pages.length,
+                        (index) {
+                          return Visibility(
+                            visible: index == bodyFocusedIndex,
+                            child: editorAdapter.buildToolbar(
+                              context: context,
+                              controller: widget.pages[index].bodyController,
+                              backgroundColor: Colors.transparent,
+                            ),
+                          );
+                        },
+                      ),
+                  ],
+                ),
+              ),
             ),
-        ],
+          ),
+        ),
       ),
     );
   }
 
   Widget buildTitleToolbar(BuildContext context) {
-    return Container(
-      color: widget.backgroundColor,
-      padding: EdgeInsets.only(
-        left: MediaQuery.of(context).padding.left,
-        right: MediaQuery.of(context).padding.right,
-        bottom: MediaQuery.of(context).padding.bottom + MediaQuery.of(context).viewInsets.bottom,
-      ),
-      child: _TitleToolbar(
-        preferences: widget.preferences,
-        onThemeChanged: (preferences) => widget.onThemeChanged(preferences),
-      ),
+    return _TitleToolbar(
+      preferences: widget.preferences,
+      onThemeChanged: (preferences) => widget.onThemeChanged(preferences),
     );
   }
 }

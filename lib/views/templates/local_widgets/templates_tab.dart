@@ -173,7 +173,7 @@ class _TemplatesTabState extends State<TemplatesTab> {
     return ReorderableListView.builder(
       itemCount: templates!.items.length,
       padding: padding,
-      onReorderItem: (int oldIndex, int newIndex) => reorder(oldIndex, newIndex),
+      onReorder: (oldIndex, newIndex) => reorder(oldIndex, newIndex),
       itemBuilder: (context, index) {
         return _buildTemplateTile(context, templates!.items[index]);
       },

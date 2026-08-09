@@ -74,9 +74,10 @@ class SpNicknameBottomSheet extends BaseBottomSheet {
                     buildNicknameField(context, controller, appLogoNotifier),
                     const SizedBox(height: 8.0),
                   ],
-                  if (kStoryPad) ...[
+                  if (kStoryPad || showLogoSelectorOnly) ...[
                     const SizedBox(height: 4.0),
                     buildLogoSelector(context, appLogoNotifier),
+                    const SizedBox(height: 16),
                     kIsCupertino ? const SizedBox(height: 12.0) : const SizedBox(height: 8.0),
                   ],
                   buildSaveButton(context, controller, appLogoNotifier),

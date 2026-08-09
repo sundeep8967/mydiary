@@ -18,10 +18,10 @@ const String kGoogleMapsAndroidApiKey = String.fromEnvironment('GOOGLE_MAPS_ANDR
 const String kGoogleMapsIosApiKey = String.fromEnvironment('GOOGLE_MAPS_IOS_API_KEY');
 const String kMapTilerApiKey = String.fromEnvironment('MAPTILER_API_KEY');
 
-const bool kIsCupertino = String.fromEnvironment('CUPERTINO') == 'yes';
+const bool kIsCupertino = true;
 
-const Color kDefaultColorSeed = Colors.black;
-const String kDefaultFontFamily = 'Quicksand';
+const Color kDefaultColorSeed = Color(0xFF007AFF); // Apple active blue
+const String kDefaultFontFamily = 'System';
 const FontWeight kDefaultFontWeight = FontWeight.normal;
 const FontWeight kTitleDefaultFontWeight = FontWeight.w500;
 

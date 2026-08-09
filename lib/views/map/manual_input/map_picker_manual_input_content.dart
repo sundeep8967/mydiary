@@ -28,17 +28,46 @@ class _MapPickerManualInputContent extends StatelessWidget {
           bottom: MediaQuery.paddingOf(context).bottom + 16.0,
         ),
         children: [
-          TextField(
-            controller: viewModel.coordinateController,
-            autofocus: true,
-            textInputAction: TextInputAction.done,
-            onSubmitted: (_) {
-              if (viewModel.canConfirm) viewModel.apply(context);
-            },
-            decoration: InputDecoration(
-              labelText: tr("input.coordinates.label"),
-              errorText: viewModel.errorText,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CupertinoTextField(
+                controller: viewModel.coordinateController,
+                autofocus: true,
+                textInputAction: TextInputAction.done,
+                onSubmitted: (_) {
+                  if (viewModel.canConfirm) viewModel.apply(context);
+                },
+                placeholder: tr("input.coordinates.label"),
+                placeholderStyle: TextStyle(
+                  color: ColorScheme.of(context).onSurface.withValues(alpha: 0.4),
+                  fontSize: 15.0,
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
+                decoration: BoxDecoration(
+                  color: ColorScheme.of(context).brightness == Brightness.dark
+                      ? Colors.white.withValues(alpha: 0.06)
+                      : Colors.black.withValues(alpha: 0.04),
+                  borderRadius: BorderRadius.circular(10.0),
+                  border: viewModel.errorText != null
+                      ? Border.all(color: ColorScheme.of(context).error)
+                      : null,
+                ),
+              ),
+              if (viewModel.errorText != null) ...[
+                const SizedBox(height: 6.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 4.0),
+                  child: Text(
+                    viewModel.errorText!,
+                    style: TextStyle(
+                      color: ColorScheme.of(context).error,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                ),
+              ],
+            ],
           ),
           const SizedBox(height: 12.0),
           _buildFormatHints(context),

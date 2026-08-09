@@ -25,12 +25,14 @@ class _LanguagesContent extends StatelessWidget {
               onPressed: () => SettingsRoute(fromOnboarding: viewModel.params.fromOnboarding).push(context),
             )
           : null,
-      body: ListView.builder(
-        padding: const EdgeInsets.only(bottom: 16.0),
-        itemCount: viewModel.supportedLocales.length,
-        itemBuilder: (context, index) {
-          return buildLocaleTile(index, context);
-        },
+      body: ListView(
+        children: [
+          CupertinoListSection.insetGrouped(
+            children: List.generate(viewModel.supportedLocales.length, (index) {
+              return buildLocaleTile(index, context);
+            }),
+          ),
+        ],
       ),
     );
   }
@@ -39,15 +41,15 @@ class _LanguagesContent extends StatelessWidget {
     final locale = viewModel.supportedLocales.elementAt(index);
     bool selected = context.locale.toLanguageTag() == locale.toLanguageTag();
 
-    return ListTile(
+    return CupertinoListTile.notched(
       key: viewModel.supportedLocaleKeys[index],
       title: Text(kNativeLanguageNames[locale.toLanguageTag()]!),
-      trailing: Visibility(
-        visible: selected,
-        child: SpFadeIn.fromBottom(
-          child: const Icon(SpIcons.check),
-        ),
-      ),
+      trailing: selected
+          ? const Icon(
+              SpIcons.check,
+              color: CupertinoColors.activeBlue,
+            )
+          : null,
       subtitle: viewModel.isSystemLocale(locale) ? Text(tr('general.default')) : null,
       onTap: () => viewModel.setLocale(locale, context),
     );

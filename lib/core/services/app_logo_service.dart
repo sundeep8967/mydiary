@@ -15,7 +15,7 @@ class AppLogoService {
   static const _channel = MethodChannel('default_platform_channel');
 
   Future<AppLogo> getCurrent() async {
-    return await _AppLogoStorage().readEnum() ?? AppLogo.storypad_1_0;
+    return await _AppLogoStorage().readEnum() ?? AppLogo.values.first;
   }
 
   Future<bool> set(AppLogo logo) async {
@@ -61,7 +61,7 @@ class AppLogoService {
 
     if (cleared) {
       await _AppLogoStorage().remove();
-      kAppLogo = AppLogo.storypad_1_0;
+      kAppLogo = AppLogo.values.first;
       AnalyticsUserProperyService.instance.logSetAppLogo(newAppLogo: null);
     }
 
