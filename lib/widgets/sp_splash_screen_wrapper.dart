@@ -82,16 +82,8 @@ class _SpSplashScreenWrapperState extends State<SpSplashScreenWrapper> with Sing
   }
 
   Widget buildSplash() {
-    Color backgroundColor;
-    Color logoBackgroundColor;
-
-    if (isDarkMode) {
-      backgroundColor = kIsCupertino ? Colors.black : const Color(0xFF121212);
-      logoBackgroundColor = Colors.white.withValues(alpha: 0.1);
-    } else {
-      backgroundColor = Colors.white;
-      logoBackgroundColor = Colors.black.withValues(alpha: 0.05);
-    }
+    Color backgroundColor = Colors.white;
+    Color logoBackgroundColor = Colors.black.withValues(alpha: 0.05);
 
     final animation = CurvedAnimation(
       parent: animationController,

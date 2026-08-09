@@ -29,7 +29,7 @@ class _HomeContent extends StatelessWidget {
   }
 
   List<Widget> _buildHomeAppBarSlivers(BuildContext context) {
-    final enableRelaxSounds = context.read<DevicePreferencesProvider>().enableRelaxSounds ?? false;
+    final enableRelaxSounds = context.read<DevicePreferencesProvider>().enableRelaxSounds;
     return [
       SliverAppBar(
         forceMaterialTransparency: true,
@@ -43,28 +43,57 @@ class _HomeContent extends StatelessWidget {
         flexibleSpace: _HomeFlexibleSpaceBar(viewModel: viewModel),
         actions: [
           if (kIAPEnabled && enableRelaxSounds)
-            IconButton(
-              icon: const Icon(SpIcons.musicNote),
+            Padding(
+              padding: const EdgeInsets.only(right: 6.0),
+              child: IconButton(
+                icon: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(SpIcons.musicNote, size: 18),
+                ),
+                onPressed: () {
+                  HapticFeedback.lightImpact();
+                  RelaxSoundsRoute().push(context);
+                },
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.only(right: 6.0),
+            child: IconButton(
+              icon: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.7),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(SpIcons.add, size: 18, color: Theme.of(context).colorScheme.primary),
+              ),
               onPressed: () {
                 HapticFeedback.lightImpact();
-                RelaxSoundsRoute().push(context);
+                _showAddActionSheet(context);
               },
             ),
-          IconButton(
-            icon: const Icon(SpIcons.add),
-            onPressed: () {
-              HapticFeedback.lightImpact();
-              _showAddActionSheet(context);
-            },
           ),
-          IconButton(
-            icon: const Icon(SpIcons.setting),
-            onPressed: () {
-              HapticFeedback.lightImpact();
-              viewModel.openSettings(context);
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 12.0),
+            child: IconButton(
+              icon: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(SpIcons.setting, size: 18),
+              ),
+              onPressed: () {
+                HapticFeedback.lightImpact();
+                viewModel.openSettings(context);
+              },
+            ),
           ),
-          const SizedBox(width: 8),
         ],
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(viewModel.scrollInfo.appBar(context).getTabBarPreferredHeight()),

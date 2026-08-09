@@ -9,44 +9,61 @@ class _HomeFlexibleSpaceBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = colorScheme.brightness == Brightness.dark;
+
     return LayoutBuilder(
       builder: (context, appBarConstraints) {
         return ClipRect(
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+            filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [
-                    viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.6),
-                    viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.4),
-                    viewModel.scrollInfo.appBar(context).getBackgroundColor(context).withValues(alpha: 0.0),
-                  ],
+                  colors: isDark
+                      ? [
+                          const Color(0xFF1E293B).withValues(alpha: 0.85),
+                          const Color(0xFF0F172A).withValues(alpha: 0.65),
+                          colorScheme.surface.withValues(alpha: 0.0),
+                        ]
+                      : [
+                          const Color(0xFFF8FAFC).withValues(alpha: 0.90),
+                          const Color(0xFFE2E8F0).withValues(alpha: 0.70),
+                          colorScheme.surface.withValues(alpha: 0.0),
+                        ],
+                ),
+                border: Border(
+                  bottom: BorderSide(
+                    color: isDark
+                        ? const Color(0xFF334155).withValues(alpha: 0.3)
+                        : const Color(0xFFCBD5E1).withValues(alpha: 0.4),
+                    width: 1.0,
+                  ),
                 ),
               ),
-          child: FlexibleSpaceBar(
-            collapseMode: CollapseMode.pin,
-            background: Container(
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(
-                left: 16.0 + MediaQuery.of(context).padding.left,
-                right: 16.0 + MediaQuery.of(context).padding.right,
-                bottom:
-                    viewModel.scrollInfo.appBar(context).getTabBarPreferredHeight() +
-                    viewModel.scrollInfo.appBar(context).contentsMarginBottom,
-              ),
-              child: Stack(
-                children: [
-                  buildGreetingMessage(context, appBarConstraints),
-                  buildYear(context, appBarConstraints),
-                ],
+              child: FlexibleSpaceBar(
+                collapseMode: CollapseMode.pin,
+                background: Container(
+                  alignment: Alignment.bottomCenter,
+                  margin: EdgeInsets.only(
+                    left: 16.0 + MediaQuery.of(context).padding.left,
+                    right: 16.0 + MediaQuery.of(context).padding.right,
+                    bottom:
+                        viewModel.scrollInfo.appBar(context).getTabBarPreferredHeight() +
+                        viewModel.scrollInfo.appBar(context).contentsMarginBottom,
+                  ),
+                  child: Stack(
+                    children: [
+                      buildGreetingMessage(context, appBarConstraints),
+                      buildYear(context, appBarConstraints),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-        ),
         );
       },
     );
