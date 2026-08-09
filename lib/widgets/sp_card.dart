@@ -76,16 +76,36 @@ class SpCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = colorScheme.brightness == Brightness.dark;
+
     return SpTapEffect(
-      effects: const [SpTapEffectType.scaleDown],
+      scaleActive: 0.96,
+      effects: const [
+        SpTapEffectType.scaleDown,
+        SpTapEffectType.touchableOpacity,
+      ],
       onTap: onTap,
       child: Container(
         width: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 16.0),
         clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8.0),
-          color: ColorScheme.of(context).secondaryContainer,
+          borderRadius: BorderRadius.circular(16.0),
+          color: colorScheme.secondaryContainer,
+          border: Border.all(
+            color: isDark
+                ? Colors.white.withValues(alpha: 0.08)
+                : Colors.black.withValues(alpha: 0.05),
+            width: 1.0,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.03),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         child: child,
       ),

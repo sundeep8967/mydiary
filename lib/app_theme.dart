@@ -244,18 +244,10 @@ class AppTheme extends StatelessWidget {
     return PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder>{
         TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
-        TargetPlatform.macOS: SharedAxisPageTransitionsBuilder(
-          transitionType: SharedAxisTransitionType.horizontal,
-          fillColor: fillColor,
-        ),
-        TargetPlatform.linux: SharedAxisPageTransitionsBuilder(
-          transitionType: SharedAxisTransitionType.horizontal,
-          fillColor: fillColor,
-        ),
-        TargetPlatform.android: SharedAxisPageTransitionsBuilder(
-          transitionType: SharedAxisTransitionType.horizontal,
-          fillColor: fillColor,
-        ),
+        TargetPlatform.android: const CupertinoPageTransitionsBuilder(),
+        TargetPlatform.macOS: const CupertinoPageTransitionsBuilder(),
+        TargetPlatform.linux: const CupertinoPageTransitionsBuilder(),
+        TargetPlatform.windows: const CupertinoPageTransitionsBuilder(),
       },
     );
   }

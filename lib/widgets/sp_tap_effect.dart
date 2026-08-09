@@ -28,16 +28,17 @@ class SpTapEffect extends StatefulWidget {
     required this.child,
     required this.onTap,
     this.onTapUp,
-    this.duration = const Duration(milliseconds: 100),
-    this.vibrate = false,
+    this.duration = const Duration(milliseconds: 120),
+    this.vibrate = true,
     this.behavior = HitTestBehavior.opaque,
     this.effects = const [
       SpTapEffectType.touchableOpacity,
+      SpTapEffectType.scaleDown,
     ],
-    this.curve = Curves.ease,
+    this.curve = Curves.easeOutCubic,
     this.onLongPressed,
     this.borderOption,
-    this.scaleActive = 0.98,
+    this.scaleActive = 0.96,
   });
 
   final Widget child;
@@ -57,7 +58,7 @@ class SpTapEffect extends StatefulWidget {
 }
 
 class _SpTapEffectState extends State<SpTapEffect> with SingleTickerProviderStateMixin {
-  final double opacityActive = 0.2;
+  final double opacityActive = 0.85;
   late AnimationController controller;
   late Animation<double> scaleAnimation;
   late Animation<double> opacityAnimation;
@@ -88,7 +89,12 @@ class _SpTapEffectState extends State<SpTapEffect> with SingleTickerProviderStat
   }
 
   void onTapCancel() => controller.reverse();
-  void onTapDown() => controller.forward();
+  void onTapDown() {
+    if (widget.vibrate) {
+      HapticFeedback.lightImpact();
+    }
+    controller.forward();
+  }
   void onTapUp(TapUpDetails? details) {
     if (widget.onTapUp != null) widget.onTapUp!(details);
     if (widget.onTap != null) widget.onTap!();
