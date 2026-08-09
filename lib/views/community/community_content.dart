@@ -22,13 +22,6 @@ class _CommunityContent extends StatelessWidget {
 
           CupertinoListSection.insetGrouped(
             children: [
-              if (RemoteConfigService.policyPrivacyUrl.get().trim().isNotEmpty == true)
-                CupertinoListTile.notched(
-                  leading: const Icon(SpIcons.policy),
-                  title: Text(tr("general.privacy_policy")),
-                  trailing: const CupertinoListTileChevron(),
-                  onTap: () => UrlOpenerService.openInCustomTab(context, RemoteConfigService.policyPrivacyUrl.get()),
-                ),
               CupertinoListTile.notched(
                 leading: const Icon(SpIcons.onboarding),
                 title: Text(tr('general.onboard_page')),

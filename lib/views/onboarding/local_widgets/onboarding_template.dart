@@ -2,12 +2,7 @@ import 'dart:math';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:storypad/core/services/remote_config/remote_config_service.dart';
-import 'package:storypad/core/services/url_opener_service.dart';
 import 'package:storypad/widgets/sp_fade_in.dart';
-import 'package:storypad/widgets/sp_tap_effect.dart';
-
-part 'privacy_policy_text.dart';
 
 class OnboardingTemplate extends StatelessWidget {
   const OnboardingTemplate({
@@ -173,10 +168,6 @@ class OnboardingTemplate extends StatelessWidget {
               );
             }),
           ),
-          const SizedBox(height: 32.0),
-        ],
-        if (currentStep == maxStep) ...[
-          _PrivacyPolicyText(context: context),
           const SizedBox(height: 32.0),
         ],
         actionButton,
