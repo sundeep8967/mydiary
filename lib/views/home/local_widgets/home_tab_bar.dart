@@ -54,18 +54,31 @@ class _HomeTabBar extends StatelessWidget {
   }
 
   Widget buildMonthTab(BuildContext context, int month) {
-    return Container(
-      height: viewModel.scrollInfo.appBar(context).indicatorHeight - 2,
-      alignment: Alignment.center,
-      child: Text(DateFormatHelper.MMM(DateTime(2000, month), context.locale)),
+    return SpTapEffect(
+      scaleActive: 0.94,
+      onTap: () {
+        viewModel.scrollInfo.moveToMonthIndex(
+          targetMonthIndex: viewModel.months.indexOf(month),
+          context: context,
+        );
+      },
+      child: Container(
+        height: viewModel.scrollInfo.appBar(context).indicatorHeight - 2,
+        alignment: Alignment.center,
+        child: Text(DateFormatHelper.MMM(DateTime(2000, month), context.locale)),
+      ),
     );
   }
 
   Widget buildOpenEndDrawerButton(BuildContext context) {
-    return IconButton(
-      onPressed: () => viewModel.openSettings(context),
-      tooltip: tr("button.more_options"),
-      icon: const Icon(SpIcons.moreVert),
+    return SpTapEffect(
+      scaleActive: 0.90,
+      onTap: () => viewModel.openSettings(context),
+      child: IconButton(
+        onPressed: () => viewModel.openSettings(context),
+        tooltip: tr("button.more_options"),
+        icon: const Icon(SpIcons.moreVert),
+      ),
     );
   }
 }

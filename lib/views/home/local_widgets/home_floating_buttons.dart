@@ -61,19 +61,23 @@ class _HomeFloatingButtonsState extends State<_HomeFloatingButtons> with SingleT
   }
 
   Widget buildButton(BuildContext context) {
-    if (MediaQuery.accessibleNavigationOf(context)) {
-      return FloatingActionButton.extended(
-        onPressed: () => toggle(context),
-        label: Text(tr("button.new_story")),
-        icon: const Icon(SpIcons.newStory),
-        shape: const StadiumBorder(),
-      );
-    } else {
-      return FloatingActionButton(
-        onPressed: () => toggle(context),
-        child: const Icon(SpIcons.newStory),
-      );
-    }
+    final fab = MediaQuery.accessibleNavigationOf(context)
+        ? FloatingActionButton.extended(
+            onPressed: () => toggle(context),
+            label: Text(tr("button.new_story")),
+            icon: const Icon(SpIcons.newStory),
+            shape: const StadiumBorder(),
+          )
+        : FloatingActionButton(
+            onPressed: () => toggle(context),
+            child: const Icon(SpIcons.newStory),
+          );
+
+    return SpTapEffect(
+      scaleActive: 0.92,
+      onTap: () => toggle(context),
+      child: fab,
+    );
   }
 
   Widget buildExpandedScaffold(BuildContext context) {
