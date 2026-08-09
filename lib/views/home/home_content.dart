@@ -66,10 +66,17 @@ class _HomeContent extends StatelessWidget {
               icon: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primaryContainer.withValues(alpha: 0.7),
+                  color: Theme.of(context).colorScheme.primary,
                   shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
+                      blurRadius: 6,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
-                child: Icon(SpIcons.add, size: 18, color: Theme.of(context).colorScheme.primary),
+                child: Icon(SpIcons.add, size: 18, color: Theme.of(context).colorScheme.onPrimary),
               ),
               onPressed: () {
                 HapticFeedback.lightImpact();
