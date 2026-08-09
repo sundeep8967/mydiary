@@ -96,13 +96,11 @@ class _SpSplashScreenWrapperState extends State<SpSplashScreenWrapper> with Sing
         child: Container(
           decoration: BoxDecoration(color: backgroundColor),
           alignment: .center,
-          child: Image(
-            image: kAppLogo!.asset.provider(),
+          child: Image.asset(
+            'assets/app_icon.png',
             width: 100,
             height: 100,
             fit: BoxFit.contain,
-            color: const Color(0xFF1D4ED8),
-            colorBlendMode: BlendMode.srcIn,
           ),
         ),
       ),

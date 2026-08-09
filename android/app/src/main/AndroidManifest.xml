@@ -19,7 +19,7 @@
     <application
         android:label="@string/app_name"
         android:name="${applicationName}"
-        android:icon="@mipmap/arcticons_diary"
+        android:icon="@mipmap/ic_launcher"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:usesCleartextTraffic="true"
@@ -82,7 +82,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.arcticons_diary"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/arcticons_diary"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -95,7 +95,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.bi_journal_bookmark_fill"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/bi_journal_bookmark_fill"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -108,7 +108,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.famicons_journal"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/famicons_journal"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -121,7 +121,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.fluent_animal_cat_24_filled"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/fluent_animal_cat_24_filled"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -134,7 +134,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.iconoir_journal"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/iconoir_journal"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -147,7 +147,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.mdi_fruit_grapes"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/mdi_fruit_grapes"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -160,7 +160,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.mingcute_apple_fruit_fill"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/mingcute_apple_fruit_fill"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -173,7 +173,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.ooui_journal_ltr"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/ooui_journal_ltr"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -186,7 +186,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.streamline_ultimate_fruit_banana"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/streamline_ultimate_fruit_banana"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -199,7 +199,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.arcticons_diary"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/arcticons_diary"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -211,7 +211,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.bi_journal_bookmark_fill"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/bi_journal_bookmark_fill"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -223,7 +223,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.famicons_journal"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/famicons_journal"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -235,7 +235,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.fluent_animal_cat_24_filled"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/fluent_animal_cat_24_filled"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -247,7 +247,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.iconoir_journal"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/iconoir_journal"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -259,7 +259,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.mdi_fruit_grapes"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/mdi_fruit_grapes"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -271,7 +271,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.mingcute_apple_fruit_fill"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/mingcute_apple_fruit_fill"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -283,7 +283,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.ooui_journal_ltr"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/ooui_journal_ltr"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
@@ -295,7 +295,7 @@
         <activity-alias
             android:name="com.ravana.mydiary.streamline_ultimate_fruit_banana"
             android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/streamline_ultimate_fruit_banana"
+            android:icon="@mipmap/ic_launcher"
             android:enabled="false"
             android:exported="true">
             <intent-filter>
