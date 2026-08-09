@@ -81,7 +81,7 @@ class RemoteConfigService {
   static const sourceCodeUrl = _RemoteConfigObject<String>(
     'SOURCE_CODE_URL',
     _RemoteConfigValueType.string,
-    'https://github.com/sundeep8967/mydiary',
+    '',
   );
 
   static const relaxSoundFreeSetVariant = _RemoteConfigObject<String>(
