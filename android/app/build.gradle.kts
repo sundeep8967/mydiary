@@ -74,6 +74,12 @@ android {
                 storePassword = envKeystorePassword
                 keyAlias = envKeyAlias
                 keyPassword = envKeyPassword
+            } else {
+                val debugConfig = signingConfigs.getByName("debug")
+                storeFile = debugConfig.storeFile
+                storePassword = debugConfig.storePassword
+                keyAlias = debugConfig.keyAlias
+                keyPassword = debugConfig.keyPassword
             }
         }
 
