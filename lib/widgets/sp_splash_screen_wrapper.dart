@@ -83,7 +83,6 @@ class _SpSplashScreenWrapperState extends State<SpSplashScreenWrapper> with Sing
 
   Widget buildSplash() {
     Color backgroundColor = Colors.white;
-    Color logoBackgroundColor = Colors.black.withValues(alpha: 0.05);
 
     final animation = CurvedAnimation(
       parent: animationController,
@@ -97,17 +96,11 @@ class _SpSplashScreenWrapperState extends State<SpSplashScreenWrapper> with Sing
         child: Container(
           decoration: BoxDecoration(color: backgroundColor),
           alignment: .center,
-          child: Container(
-            width: 170,
-            height: 170,
-            decoration: BoxDecoration(
-              color: logoBackgroundColor,
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: kAppLogo!.asset.provider(),
-                fit: BoxFit.cover,
-              ),
-            ),
+          child: Image(
+            image: kAppLogo!.asset.provider(),
+            width: 100,
+            height: 100,
+            fit: BoxFit.contain,
           ),
         ),
       ),
