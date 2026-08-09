@@ -7,6 +7,6 @@
         android:gravity="center">
         <bitmap
             android:gravity="fill"
-            android:src="@mipmap/arcticons_diary" />
+            android:src="@mipmap/uil_diary_alt" />
     </item>
 </layer-list>

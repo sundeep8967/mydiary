@@ -3,7 +3,7 @@
     <style name="LaunchTheme" parent="Theme.AppCompat.DayNight">
         <item name="android:windowBackground">@drawable/launch_background</item>
         <item name="android:windowSplashScreenBackground">@color/splash_background</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/arcticons_diary</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/uil_diary_alt</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/splash_background</item>
     </style>
 
