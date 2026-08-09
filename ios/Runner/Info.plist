@@ -92,17 +92,6 @@
 				<array>
 					<string>streamline_ultimate_fruit_banana</string>
 				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
-			</dict>
-			<key>uil_diary_alt</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>uil_diary_alt</string>
-				</array>
-				<key>UIPrerenderedIcon</key>
-				<false/>
 			</dict>
 		</dict>
 	</dict>

@@ -19,7 +19,7 @@
     <application
         android:label="@string/app_name"
         android:name="${applicationName}"
-        android:icon="@mipmap/uil_diary_alt"
+        android:icon="@mipmap/arcticons_diary"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:usesCleartextTraffic="true"
@@ -194,19 +194,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
---
-        <!-- App logo alias for uil_diary_alt -->
-        <activity-alias
-            android:name="com.ravana.mydiary.uil_diary_alt"
-            android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/uil_diary_alt"
-            android:enabled="false"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
+
     <!-- App logo alias for arcticons_diary -->
         <activity-alias
             android:name="com.ravana.mydiary.arcticons_diary"
@@ -315,17 +303,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-<!-- App logo alias for uil_diary_alt -->
-        <activity-alias
-            android:name="com.ravana.mydiary.uil_diary_alt"
-            android:targetActivity="com.ravana.mydiary.MainActivity"
-            android:icon="@mipmap/uil_diary_alt"
-            android:enabled="false"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity-alias>
+
     </application>
 </manifest>

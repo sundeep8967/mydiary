@@ -113,7 +113,6 @@ flutter:
     - assets/logos/streamline_ultimate_fruit_banana.icon/Assets/
     - assets/logos/famicons_journal.icon/Assets/
     - assets/logos/ooui_journal_ltr.icon/Assets/
-    - assets/logos/uil_diary_alt.icon/Assets/
 
 dependency_overrides:
   record_platform_interface: 1.1.0

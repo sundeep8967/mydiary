@@ -13,8 +13,7 @@ enum AppLogo {
   mdi_fruit_grapes(logoName: 'mdi_fruit_grapes'),
   mingcute_apple_fruit_fill(logoName: 'mingcute_apple_fruit_fill'),
   ooui_journal_ltr(logoName: 'ooui_journal_ltr'),
-  streamline_ultimate_fruit_banana(logoName: 'streamline_ultimate_fruit_banana'),
-  uil_diary_alt(logoName: 'uil_diary_alt')
+  streamline_ultimate_fruit_banana(logoName: 'streamline_ultimate_fruit_banana')
   ;
 
   final String logoName;
@@ -48,8 +47,6 @@ enum AppLogo {
         return Assets.logos.oouiJournalLtr.assets.oouiJournalLtr;
       case .streamline_ultimate_fruit_banana:
         return Assets.logos.streamlineUltimateFruitBanana.assets.streamlineUltimateFruitBanana;
-      case .uil_diary_alt:
-        return Assets.logos.uilDiaryAlt.assets.uilDiaryAlt;
     }
   }
 }
