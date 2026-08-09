@@ -69,17 +69,28 @@ android {
             val envKeyAlias = System.getenv("RELEASE_KEY_ALIAS")
             val envKeyPassword = System.getenv("RELEASE_KEY_PASSWORD")
 
-            if (envKeystorePath != null) {
-                storeFile = file(envKeystorePath)
-                storePassword = envKeystorePassword
-                keyAlias = envKeyAlias
-                keyPassword = envKeyPassword
-            } else {
-                val debugConfig = signingConfigs.getByName("debug")
-                storeFile = debugConfig.storeFile
-                storePassword = debugConfig.storePassword
-                keyAlias = debugConfig.keyAlias
-                keyPassword = debugConfig.keyPassword
+            val keyProps = loadKeystoreProperties("key.properties")
+
+            when {
+                envKeystorePath != null -> {
+                    storeFile = file(envKeystorePath)
+                    storePassword = envKeystorePassword
+                    keyAlias = envKeyAlias
+                    keyPassword = envKeyPassword
+                }
+                keyProps.isNotEmpty() -> {
+                    storeFile = file(keyProps["storeFile"] as String)
+                    storePassword = keyProps["storePassword"] as String
+                    keyAlias = keyProps["keyAlias"] as String
+                    keyPassword = keyProps["keyPassword"] as String
+                }
+                else -> {
+                    val debugConfig = signingConfigs.getByName("debug")
+                    storeFile = debugConfig.storeFile
+                    storePassword = debugConfig.storePassword
+                    keyAlias = debugConfig.keyAlias
+                    keyPassword = debugConfig.keyPassword
+                }
             }
         }
 
