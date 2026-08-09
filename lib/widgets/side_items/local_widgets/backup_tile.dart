@@ -33,15 +33,22 @@ class BackupTile extends StatelessWidget {
       leading = const Icon(SpIcons.cloudOff);
       title = Text(tr("list_tile.backup.title"));
       subtitle = Text(tr('list_tile.backup.unsignin_subtitle'));
-      action = FilledButton.icon(
-        icon: SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24),
-        label: Text(tr('button.connect')),
+      action = OutlinedButton.icon(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black87,
+          side: const BorderSide(color: Color(0xFFDDDDDD), width: 1.5),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+        icon: SvgPicture.asset('assets/images/google_g_logo.svg', width: 20, height: 20),
+        label: const Text('Sign in with Google', style: TextStyle(fontWeight: FontWeight.w600)),
         onPressed: () => provider.signIn(context, .google_drive),
       );
     } else {
       switch (provider.connectionStatus) {
         case .unknownError:
-          leading = const Icon(SpIcons.cloudOff);
+              leading = SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24);
           title = Text(tr("list_tile.backup.title"));
           subtitle = Text(tr('list_tile.backup.unknown_error'));
           action = FilledButton.icon(
@@ -51,7 +58,7 @@ class BackupTile extends StatelessWidget {
           );
           break;
         case .noInternet:
-          leading = const Icon(SpIcons.cloudOff);
+              leading = SvgPicture.asset('assets/images/google_g_logo.svg', width: 24, height: 24);
           title = Text(tr("list_tile.backup.title"));
           subtitle = Text(tr('list_tile.backup.no_internet_subtitle'));
           action = FilledButton.icon(
